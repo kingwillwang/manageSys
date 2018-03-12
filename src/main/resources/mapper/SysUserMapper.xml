@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.hk.dao.SysUserDao">
+
+    <resultMap type="com.hk.entity.SysUser" id="UserResult">
+        <result property="id" column="id"/>
+        <result property="userName" column="userName"/>
+        <result property="password" column="password"/>
+    </resultMap>
+
+    <!-- 用户登录 -->
+    <select id="login" parameterType="com.hk.entity.SysUser" resultMap="UserResult">
+        SELECT id,userName,password
+        FROM sysUser
+        WHERE userName = #{userName}
+        AND password = #{password}
+    </select>
+
+    <!-- 添加用户 -->
+    <insert id="addUser" parameterType="com.hk.entity.SysUser">
+        INSERT INTO sysUser(id,userName,password)
+        VALUES (#{id},#{userName},#{password})
+    </insert>
+
+    <!-- 查询用户 -->
+    <select id="findUsers" parameterType="Map" resultMap="UserResult">
+            SELECT id,userName,password from sysuser
+        <where>
+            <if test="userName!=null and userName!='' ">
+                AND userName LIKE #{userName}
+            </if>
+        </where>
+        <if test="start!=null and size!=null">
+            LIMIT #{start},#{size}
+        </if>
+    </select>
+
+    <select id="getTotalUser" parameterType="Map" resultType="Long">
+        SELECT COUNT(*) FROM sysuser
+        <where>
+            <if test="userName!=null and userName!='' ">
+                AND userName LIKE #{userName}
+            </if>
+        </where>
+    </select>
+
+    <!-- 修改用户 -->
+    <update id="updateUser" parameterType="User">
+        update sysuser
+        <set>
+            <if test="userName!=null and userName!='' ">
+                userName=#{userName},
+            </if>
+            <if test="password!=null and password!='' ">
+                password=#{password}
+            </if>
+        </set>
+        where id=#{id}
+    </update>
+
+    <!-- 删除用户 -->
+    <delete id="deleteUser" parameterType="Integer">
+        delete from sysuser
+        where id=#{id}
+    </delete>
+
+</mapper>
