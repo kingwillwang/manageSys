@@ -17,7 +17,7 @@ function login() {
         success: function (result) {
             if (result.resultCode == 200) {
                 setCookie("userName", result.data.currentUser.userName);
-                window.location.href = "main.jsp";
+                window.location.href = BasePath + "/main.jsp";
             } else {
                 alert(result.message);
             }
