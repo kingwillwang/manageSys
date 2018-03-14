@@ -1,0 +1,22 @@
+.userSetList {
+    padding: 0;
+    border: 0;
+    margin: 5px 0 0;
+}
+
+.ui-dialog .ui-dialog-buttonpane .btn-out {
+    font-size: 10px;
+    margin: .4em .4em 0;
+}
+
+.ui-dialog .ui-dialog-buttonpane .btn-out .ui-button-text {
+    padding: 0;
+}
+
+#outSys-message div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: red;
+    height: 60px;
+}

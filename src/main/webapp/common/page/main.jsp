@@ -6,10 +6,14 @@
     <title>系统主页</title>
     <!-- basic styles -->
     <link href="${pageContext.request.contextPath}/assets/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="${pageContext.request.contextPath}/assets/css/jquery-ui-1.10.3.custom.min.css" rel="stylesheet" />
+    <link href="${pageContext.request.contextPath}/assets/css/jquery-ui-1.10.3.full.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/font-awesome/css/font-awesome.css"/>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/ace.min.css" />
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/ace-rtl.min.css" />
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/ace-skins.min.css" />
+    <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
     <script src="${pageContext.request.contextPath}/assets/js/ace-extra.min.js"></script>
     <jsp:include page="${pageContext.request.contextPath}/common/page/base.jsp"/>
     <script src="${pageContext.request.contextPath}/common/js/main.js"></script>
@@ -19,70 +23,47 @@
 <!-- 头部标签 -->
 <jsp:include page="${pageContext.request.contextPath}/header/page/header.jsp"/>
 <!-- 头部标签 -->
+
 <!-- 主体内容 -->
 <div class="main-container" id="main-container">
     <script type="text/javascript">
-        try{ace.settings.check('main-container' , 'fixed')}catch(e){}
+        try {
+            ace.settings.check('main-container', 'fixed')
+        } catch (e) {
+        }
     </script>
 
     <div class="main-container-inner">
 
-       <jsp:include page="${pageContext.request.contextPath}/leftBar/page/left.jsp"/>
+        <jsp:include page="${pageContext.request.contextPath}/leftBar/page/left.jsp"/>
 
         <!-- 主体 -->
-        <div class="main-content">
-            <div class="breadcrumbs" id="breadcrumbs">
-                <script type="text/javascript">
-                    try{ace.settings.check('breadcrumbs' , 'fixed')}catch(e){}
-                </script>
+        <%--<jsp:include page="${pageContext.request.contextPath}/views/page/consoleShow.jsp"/>--%>
+        <div class="iframe_box main-content">
+            <div class="widget-box transparent padding-0" id="iframe_tab_box">
 
-                <ul class="breadcrumb">
-                    <li>
-                        <i class="icon-home home-icon"></i>
-                        <a href="#">首页</a>
-                    </li>
-                    <li class="active">控制台</li>
-                </ul><!-- .breadcrumb -->
-            </div>
-
-            <div class="page-content">
-                <div class="page-header">
-                    <h1>
-                        控制台
-                        <small>
-                            <i class="icon-double-angle-right"></i>
-                            查看
-                        </small>
-                    </h1>
+                <div class="widget-header">
+                    <div class="widget-toolbar-box pull-left">
+                        <div class="widget-toolbar no-border pull-left">
+                            <ul class="nav nav-tabs pull-left" id="recent-tab">
+                            </ul>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="row">
-                    <div class="col-xs-12">
-                        <!-- PAGE CONTENT BEGINS -->
-
-                        <div class="alert alert-block alert-success">
-                            <button type="button" class="close" data-dismiss="alert">
-                                <i class="icon-remove"></i>
-                            </button>
-
-                            <i class="icon-ok green"></i>
-
-                            欢迎使用
-                            <strong class="green">
-                                Ace后台管理系统
-                                <small>(v1.2)</small>
-                            </strong>
-                            ,轻量级好用的后台管理系统模版.
+                <div class="widget-body">
+                    <div class="widget-main padding-4">
+                        <div class="tab-content padding-0 hidden" id="iframe_tab_content">
                         </div>
-
-                        <!-- PAGE CONTENT ENDS -->
-                    </div><!-- /.col -->
-                </div><!-- /.row -->
-            </div><!-- /.page-content -->
+                    </div>
+                </div>
+            </div>
         </div>
+
+
         <!-- 主体 -->
 
-        <!-- 右侧设置 -->
+        <!-- 右侧设置换肤 -->
         <div class="ace-settings-container" id="ace-settings-container">
             <div class="btn btn-app btn-xs btn-warning ace-settings-btn" id="ace-settings-btn">
                 <i class="icon-cog bigger-150"></i>
@@ -102,27 +83,27 @@
                 </div>
 
                 <div>
-                    <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-navbar" />
+                    <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-navbar"/>
                     <label class="lbl" for="ace-settings-navbar"> 固定标题栏</label>
                 </div>
 
                 <div>
-                    <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-sidebar" />
+                    <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-sidebar"/>
                     <label class="lbl" for="ace-settings-sidebar"> 固定导航栏</label>
                 </div>
 
                 <div>
-                    <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-breadcrumbs" />
+                    <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-breadcrumbs"/>
                     <label class="lbl" for="ace-settings-breadcrumbs">固定面包屑</label>
                 </div>
 
                 <div>
-                    <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-rtl" />
+                    <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-rtl"/>
                     <label class="lbl" for="ace-settings-rtl">切换到左边</label>
                 </div>
 
                 <div>
-                    <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-add-container" />
+                    <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-add-container"/>
                     <label class="lbl" for="ace-settings-add-container">
                         切换窄屏
                         <b></b>
@@ -130,7 +111,7 @@
                 </div>
             </div>
         </div>
-        <!-- 右侧设置 -->
+        <!-- 右侧设置换肤 -->
     </div>
 
     <!-- 回到顶层 -->
@@ -141,10 +122,10 @@
 </div>
 <!-- 主体内容 -->
 
-<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
 <script src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
 <script src="${pageContext.request.contextPath}/assets/js/typeahead-bs2.min.js"></script>
 <script src="${pageContext.request.contextPath}/assets/js/jquery-ui-1.10.3.custom.min.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/jquery-ui-1.10.3.full.min.js"></script>
 <script src="${pageContext.request.contextPath}/assets/js/jquery.slimscroll.min.js"></script>
 <script src="${pageContext.request.contextPath}/assets/js/ace-elements.min.js"></script>
 <script src="${pageContext.request.contextPath}/assets/js/ace.min.js"></script>

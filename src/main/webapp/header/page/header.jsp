@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 
-
+<link rel="stylesheet" href="${pageContext.request.contextPath}/header/css/header.css" />
 <script src="${pageContext.request.contextPath}/header/js/header.js"></script>
 
 <div class="navbar navbar-default" id="navbar">
@@ -10,7 +10,7 @@
 
     <div class="navbar-container" id="navbar-container">
         <div class="navbar-header pull-left">
-            <a href="#" class="navbar-brand">
+            <a href="${pageContext.request.contextPath}/common/page/main.jsp" class="navbar-brand">
                 <small>
                     <i class="icon-leaf"></i>
                     店小二后台管理系统
@@ -30,9 +30,9 @@
                         <i class="icon-caret-down"></i>
                     </a>
 
-                    <ul class="user-menu pull-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
+                    <ul class="user-menu pull-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close userSetList">
                         <li>
-                            <a href="javascript:logout()">
+                            <a href="#" id="id-btn-outSys" class="btn btn-sm">
                                 <i class="icon-off"></i>
                                 退出
                             </a>
@@ -41,5 +41,12 @@
                 </li>
             </ul>
         </div>
+
+        <div id="outSys-message" class="hide">
+            <div>
+                确定要退出吗？
+            </div>
+        </div>
     </div>
 </div>
+

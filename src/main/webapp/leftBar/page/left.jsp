@@ -1,4 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+
+<script src="${pageContext.request.contextPath}/leftBar/js/left.js"></script>
 <div class="sidebar" id="sidebar">
     <script type="text/javascript">
         try{ace.settings.check('sidebar' , 'fixed')}catch(e){}
@@ -6,9 +8,18 @@
 
     <ul class="nav nav-list">
         <li class="active">
-            <a href="index.html">
+            <a href="${pageContext.request.contextPath}/views/page/consoleShow.jsp" data-default-tab="true"
+               data-target="menuIframe" data-tab-title="&nbsp;控制台&nbsp;&nbsp;">
                 <i class="icon-dashboard"></i>
                 <span class="menu-text"> 控制台 </span>
+            </a>
+        </li>
+
+        <li>
+            <a href="#" data-target="menuIframe"
+               data-tab-title="&nbsp;用户管理&nbsp;&nbsp;">
+                <i class="icon-user"></i>
+                <span class="menu-text"> 用户管理 </span>
             </a>
         </li>
 
@@ -22,28 +33,28 @@
 
             <ul class="submenu">
                 <li>
-                    <a href="form-elements.html">
+                    <a href="#" data-target="menuIframe">
                         <i class="icon-double-angle-right"></i>
                         表单组件
                     </a>
                 </li>
 
                 <li>
-                    <a href="form-wizard.html">
+                    <a href="#" data-target="menuIframe">
                         <i class="icon-double-angle-right"></i>
                         向导提示 &amp; 验证
                     </a>
                 </li>
 
                 <li>
-                    <a href="wysiwyg.html">
+                    <a href="#" data-target="menuIframe">
                         <i class="icon-double-angle-right"></i>
                         编辑器
                     </a>
                 </li>
 
                 <li>
-                    <a href="dropzone.html">
+                    <a href="#" data-target="menuIframe">
                         <i class="icon-double-angle-right"></i>
                         文件上传
                     </a>
