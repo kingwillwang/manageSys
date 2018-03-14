@@ -1,4 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+
+
+<script src="${pageContext.request.contextPath}/header/js/header.js"></script>
+
 <div class="navbar navbar-default" id="navbar">
     <script type="text/javascript">
         try{ace.settings.check('navbar' , 'fixed')}catch(e){}
@@ -18,9 +22,9 @@
             <ul class="nav ace-nav">
                 <li class="light-blue">
                     <a data-toggle="dropdown" href="#" class="dropdown-toggle">
-                        <img class="nav-user-photo" src="assets/avatars/avatar2.png" alt="Jason's Photo" />
+                        <img class="nav-user-photo" src="${pageContext.request.contextPath}/assets/avatars/profile-pic.jpg" alt="Photo" />
                         <span class="user-info">
-                            <small>欢迎光临</small>
+                            <small>当前用户</small>
                             ${cookie['userName'].value}
                         </span>
                         <i class="icon-caret-down"></i>

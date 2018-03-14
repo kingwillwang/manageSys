@@ -9,7 +9,8 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/login/css/htmleaf-demo.css">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/login/css/login.css">
-    <jsp:include page="${pageContext.request.contextPath}/views/base.jsp"/>
+    <jsp:include page="${pageContext.request.contextPath}/common/page/base.jsp"/>
+    <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
     <script src="${pageContext.request.contextPath}/login/js/login.js"></script>
 </head>
 
@@ -45,5 +46,4 @@
     </div>
 </div>
 </body>
-
 </html>

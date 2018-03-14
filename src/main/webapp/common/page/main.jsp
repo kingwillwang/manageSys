@@ -11,13 +11,15 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/ace-rtl.min.css" />
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/ace-skins.min.css" />
     <script src="${pageContext.request.contextPath}/assets/js/ace-extra.min.js"></script>
-    <jsp:include page="${pageContext.request.contextPath}/views/base.jsp"/>
-    <script src="${pageContext.request.contextPath}/js/main.js"></script>
+    <jsp:include page="${pageContext.request.contextPath}/common/page/base.jsp"/>
+    <script src="${pageContext.request.contextPath}/common/js/main.js"></script>
 </head>
 
 <body>
-<jsp:include page="${pageContext.request.contextPath}/views/header.jsp"/>
-
+<!-- 头部标签 -->
+<jsp:include page="${pageContext.request.contextPath}/header/page/header.jsp"/>
+<!-- 头部标签 -->
+<!-- 主体内容 -->
 <div class="main-container" id="main-container">
     <script type="text/javascript">
         try{ace.settings.check('main-container' , 'fixed')}catch(e){}
@@ -25,7 +27,7 @@
 
     <div class="main-container-inner">
 
-       <jsp:include page="${pageContext.request.contextPath}/views/left.jsp"/>
+       <jsp:include page="${pageContext.request.contextPath}/leftBar/page/left.jsp"/>
 
         <!-- 主体 -->
         <div class="main-content">
@@ -137,19 +139,15 @@
     </a>
     <!-- 回到顶层 -->
 </div>
+<!-- 主体内容 -->
 
 <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
 <script src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
 <script src="${pageContext.request.contextPath}/assets/js/typeahead-bs2.min.js"></script>
-
 <script src="${pageContext.request.contextPath}/assets/js/jquery-ui-1.10.3.custom.min.js"></script>
 <script src="${pageContext.request.contextPath}/assets/js/jquery.slimscroll.min.js"></script>
-
-<!-- ace scripts -->
-
 <script src="${pageContext.request.contextPath}/assets/js/ace-elements.min.js"></script>
 <script src="${pageContext.request.contextPath}/assets/js/ace.min.js"></script>
-
 </body>
 </html>
 

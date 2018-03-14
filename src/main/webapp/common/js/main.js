@@ -20,7 +20,3 @@ checkCookie();
 //         addTab(url, text, iconCls);
 //     }
 // }
-
-function logout() {
-        alert("1111");
-}

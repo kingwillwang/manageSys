@@ -12,12 +12,12 @@ function login() {
     $.ajax({
         type: "POST",
         dataType: "json",
-        url: BasePath + "/users/cookie",
+        url: basePath + "/users/cookie",
         data: $("#adminlogin").serialize(),
         success: function (result) {
             if (result.resultCode == 200) {
                 setCookie("userName", result.data.currentUser.userName);
-                window.location.href = BasePath + "/main.jsp";
+                window.location.href = basePath + "/common/page/main.jsp";
             } else {
                 alert(result.message);
             }
