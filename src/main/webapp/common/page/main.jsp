@@ -34,14 +34,12 @@
     </script>
 
     <div class="main-container-inner">
-
+        <!-- 左侧导航栏 -->
         <jsp:include page="${pageContext.request.contextPath}/leftBar/page/left.jsp"/>
-
+        <!-- 左侧导航栏 -->
         <!-- 主体 -->
-        <%--<jsp:include page="${pageContext.request.contextPath}/views/page/consoleShow.jsp"/>--%>
         <div class="iframe_box main-content">
             <div class="widget-box transparent padding-0" id="iframe_tab_box">
-
                 <div class="widget-header">
                     <div class="widget-toolbar-box pull-left">
                         <div class="widget-toolbar no-border pull-left">
@@ -50,7 +48,6 @@
                         </div>
                     </div>
                 </div>
-
                 <div class="widget-body">
                     <div class="widget-main padding-4">
                         <div class="tab-content padding-0 hidden" id="iframe_tab_content">
@@ -59,10 +56,7 @@
                 </div>
             </div>
         </div>
-
-
         <!-- 主体 -->
-
         <!-- 右侧设置换肤 -->
         <div class="ace-settings-container" id="ace-settings-container">
             <div class="btn btn-app btn-xs btn-warning ace-settings-btn" id="ace-settings-btn">
@@ -81,47 +75,12 @@
                     </div>
                     <span>&nbsp; 选择皮肤</span>
                 </div>
-
-                <div>
-                    <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-navbar"/>
-                    <label class="lbl" for="ace-settings-navbar"> 固定标题栏</label>
-                </div>
-
-                <div>
-                    <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-sidebar"/>
-                    <label class="lbl" for="ace-settings-sidebar"> 固定导航栏</label>
-                </div>
-
-                <div>
-                    <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-breadcrumbs"/>
-                    <label class="lbl" for="ace-settings-breadcrumbs">固定面包屑</label>
-                </div>
-
-                <div>
-                    <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-rtl"/>
-                    <label class="lbl" for="ace-settings-rtl">切换到左边</label>
-                </div>
-
-                <div>
-                    <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-add-container"/>
-                    <label class="lbl" for="ace-settings-add-container">
-                        切换窄屏
-                        <b></b>
-                    </label>
-                </div>
             </div>
         </div>
         <!-- 右侧设置换肤 -->
     </div>
-
-    <!-- 回到顶层 -->
-    <a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
-        <i class="icon-double-angle-up icon-only bigger-110"></i>
-    </a>
-    <!-- 回到顶层 -->
 </div>
 <!-- 主体内容 -->
-
 <script src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
 <script src="${pageContext.request.contextPath}/assets/js/typeahead-bs2.min.js"></script>
 <script src="${pageContext.request.contextPath}/assets/js/jquery-ui-1.10.3.custom.min.js"></script>
