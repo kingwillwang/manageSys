@@ -1,7 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="en">
-<jsp:include page="${pageContext.request.contextPath}/common/page/contentHeader.jsp"/>
+<head>
+    <title>控制台</title>
+    <jsp:include page="${pageContext.request.contextPath}/common/page/contentHeader.jsp"/>
+</head>
 <body class="no-skin">
 <div class="main-container ace-save-state" id="main-container">
     <script type="text/javascript">
@@ -14,9 +17,11 @@
                 <ul class="breadcrumb">
                     <li>
                         <i class="ace-icon fa fa-home home-icon"></i>
-                        <a href="${pageContext.request.contextPath}/views/page/consoleShow.jsp">首页</a>
+                        首页
                     </li>
-                    <li class="active">控制台</li>
+                    <li class="active">
+                        控制台
+                    </li>
                 </ul>
             </div>
 
@@ -34,26 +39,7 @@
             </div><!-- /.page-content -->
         </div>
     </div><!-- /.main-content -->
-
-    <div class="footer">
-        <div class="footer-inner">
-            <!-- #section:basics/footer -->
-            <div class="footer-content">
-						<span class="bigger-120">
-							<span class="blue bolder">店小二</span>
-                            江苏环科网络&copy; 2018
-						</span>
-
-                &nbsp; &nbsp;
-            </div>
-
-            <!-- /section:basics/footer -->
-        </div>
-    </div>
-
-    <a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
-        <i class="ace-icon fa fa-angle-double-up icon-only bigger-110"></i>
-    </a>
+    <jsp:include page="${pageContext.request.contextPath}/common/page/footer.jsp"/>
 </div><!-- /.main-container -->
 <jsp:include page="${pageContext.request.contextPath}/common/page/contentFooter.jsp"/>
 </body>

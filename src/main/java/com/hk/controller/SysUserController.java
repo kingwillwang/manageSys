@@ -62,16 +62,15 @@ public class SysUserController {
 
     /**
      * 用户列表
-     * @param page
-     * @param rows
      * @param sysUser
      * @param response
      * @return
      * @throws Exception
      */
     @RequestMapping(value = "/datagrid", method = RequestMethod.POST)
-    public String list(@RequestParam(value = "page", required = false) String page, @RequestParam(value = "rows", required = false) String rows, SysUser sysUser, HttpServletResponse response) throws Exception {
-        PageBean pageBean = new PageBean(Integer.parseInt(page), Integer.parseInt(rows));
+    @ResponseBody
+    public String list(SysUser sysUser, HttpServletResponse response) throws Exception {
+//        PageBean pageBean = new PageBean(Integer.parseInt(pageNumber), Integer.parseInt(pageSize));
         Map<String, Object> map = new HashMap<String, Object>();
         map.put("userName", StringUtil.formatLike(sysUser.getUserName()));
         map.put("start", pageBean.getStart());

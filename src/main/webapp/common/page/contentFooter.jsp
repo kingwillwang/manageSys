@@ -1,18 +1,4 @@
 <!-- js复用 -->
-<script src="${pageContext.request.contextPath}/contentAssets/js/jquery.min.js"></script>
-<script type="text/javascript">
-    if('ontouchstart' in document.documentElement) document.write("<script src='${pageContext.request.contextPath}/contentAssets/js/jquery.mobile.custom.min.js'>"+"<"+"/script>");
-</script>
-<script src="${pageContext.request.contextPath}/contentAssets/js/bootstrap.min.js"></script>
-<!-- page specific plugin scripts -->
-<script src="${pageContext.request.contextPath}/contentAssets/js/jquery.dataTables.min.js"></script>
-<script src="${pageContext.request.contextPath}/contentAssets/js/jquery.dataTables.bootstrap.min.js"></script>
-<script src="${pageContext.request.contextPath}/contentAssets/datatables.net-buttons/dataTables.buttons.min.js"></script>
-<script src="${pageContext.request.contextPath}/contentAssets/datatables.net-buttons/buttons.flash.min.js"></script>
-<script src="${pageContext.request.contextPath}/contentAssets/datatables.net-buttons/buttons.html5.min.js"></script>
-<script src="${pageContext.request.contextPath}/contentAssets/datatables.net-buttons/buttons.print.min.js"></script>
-<script src="${pageContext.request.contextPath}/contentAssets/datatables.net-buttons/buttons.colVis.min.js"></script>
-<script src="${pageContext.request.contextPath}/contentAssets/js/dataTables.select.min.js"></script>
 <!-- ace scripts -->
 <script src="${pageContext.request.contextPath}/contentAssets/src/elements.scroller.js"></script>
 <script src="${pageContext.request.contextPath}/contentAssets/src/elements.colorpicker.js"></script>
