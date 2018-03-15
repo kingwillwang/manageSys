@@ -44,7 +44,7 @@ function initTab() {
             $tab.trigger('click');
             // }, 100);
         }
-    }
+    };
     $('#iframe_tab_box .widget-header').on('resize', function () {
         var $self = $(this);
         var $navbars = $self.find('.nav-tabs');

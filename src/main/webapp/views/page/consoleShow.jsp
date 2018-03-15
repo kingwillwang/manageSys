@@ -13,7 +13,7 @@
 
     <div class="main-content">
         <div class="main-content-inner">
-            <div class="breadcrumbs ace-save-state breadcrumbs-fixed" id="breadcrumbs">
+            <div class="breadcrumbs ace-save-state" id="breadcrumbs">
                 <ul class="breadcrumb">
                     <li>
                         <i class="ace-icon fa fa-home home-icon"></i>
@@ -41,6 +41,5 @@
     </div><!-- /.main-content -->
     <jsp:include page="${pageContext.request.contextPath}/common/page/footer.jsp"/>
 </div><!-- /.main-container -->
-<jsp:include page="${pageContext.request.contextPath}/common/page/contentFooter.jsp"/>
 </body>
 </html>
