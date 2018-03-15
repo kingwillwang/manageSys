@@ -69,8 +69,8 @@ public class SysUserController {
      */
     @RequestMapping(value = "/datagrid", method = RequestMethod.POST)
     @ResponseBody
-    public String list(@RequestBody String pageNumber,@RequestBody String pageSize, SysUser sysUser, HttpServletResponse response) throws Exception {
-        PageBean pageBean = new PageBean(Integer.parseInt(pageNumber), Integer.parseInt(pageSize));
+    public String list(@RequestParam(value = "page", required = false) String page, @RequestParam(value = "rows", required = false) String rows, SysUser sysUser, HttpServletResponse response) throws Exception {
+        PageBean pageBean = new PageBean(Integer.parseInt(page), Integer.parseInt(rows));
         Map<String, Object> map = new HashMap<String, Object>();
         map.put("userName", StringUtil.formatLike(sysUser.getUserName()));
         map.put("start", pageBean.getStart());
