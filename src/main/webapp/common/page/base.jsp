@@ -5,5 +5,5 @@
 <script>
     var basePath = "<%=webPath%>";
 </script>
-
+<link rel="shortcut icon" href="#" />
 <script src="${pageContext.request.contextPath}/common/js/common.js"></script>

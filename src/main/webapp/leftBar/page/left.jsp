@@ -1,6 +1,4 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-
-<script src="${pageContext.request.contextPath}/leftBar/js/left.js"></script>
 <div class="sidebar" id="sidebar">
     <script type="text/javascript">
         try{ace.settings.check('sidebar' , 'fixed')}catch(e){}
@@ -16,7 +14,7 @@
         </li>
 
         <li>
-            <a href="#" data-target="menuIframe"
+            <a href="${pageContext.request.contextPath}/views/page/userManage.jsp" data-target="menuIframe"
                data-tab-title="&nbsp;用户管理&nbsp;&nbsp;">
                 <i class="icon-user"></i>
                 <span class="menu-text"> 用户管理 </span>

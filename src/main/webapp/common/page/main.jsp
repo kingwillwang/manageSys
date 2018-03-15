@@ -13,10 +13,7 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/ace.min.css" />
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/ace-rtl.min.css" />
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/ace-skins.min.css" />
-    <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
-    <script src="${pageContext.request.contextPath}/assets/js/ace-extra.min.js"></script>
     <jsp:include page="${pageContext.request.contextPath}/common/page/base.jsp"/>
-    <script src="${pageContext.request.contextPath}/common/js/main.js"></script>
 </head>
 
 <body>
@@ -81,7 +78,10 @@
     </div>
 </div>
 <!-- 主体内容 -->
+<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
 <script src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
+<script src="${pageContext.request.contextPath}/common/js/main.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/ace-extra.min.js"></script>
 <script src="${pageContext.request.contextPath}/assets/js/typeahead-bs2.min.js"></script>
 <script src="${pageContext.request.contextPath}/assets/js/jquery-ui-1.10.3.custom.min.js"></script>
 <script src="${pageContext.request.contextPath}/assets/js/jquery-ui-1.10.3.full.min.js"></script>
