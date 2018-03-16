@@ -61,8 +61,11 @@ function openWatchUserDialog() {
     } else {
         var row = selectedRows[0];
         $('#user-detail').window('open');
-        $('#dg').datagrid({
-            url: baseUrl + "/user",
+        $('#detailTable').datagrid({
+            url: baseUrl + "/userDetail",
+            queryParams: {
+                userId: row.id
+            }
         });
     }
 }

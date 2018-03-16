@@ -78,7 +78,7 @@
                     <a href="javascript:closeUserDialog()" class="easyui-linkbutton" iconCls="icon-cancel">取消</a>
                 </div>
 
-                <div id="user-detail" class="easyui-window" title="登录详情" style="width:300px;height:100px;padding:5px;" closed="true">
+                <div id="user-detail" class="easyui-window" title="登录详情" style="width:650px;height:560px;padding:5px;" closed="true">
                     <table id="detailTable" class="easyui-datagrid" pagination="true" fitColumns="true" rownumbers="true"
                            scrollbarSize="0"  singleSelect="true" pageSize="10" striped="true">
                         <thead>

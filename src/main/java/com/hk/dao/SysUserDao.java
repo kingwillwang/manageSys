@@ -83,4 +83,11 @@ public interface SysUserDao {
      * @return
      */
     public List<UserProperty> findUserDetails(Map<String, Object> map);
+
+    /**
+     * 用户详情总数
+     * @param map
+     * @return
+     */
+    public Long getTotalUserDetail(Map<String, Object> map);
 }

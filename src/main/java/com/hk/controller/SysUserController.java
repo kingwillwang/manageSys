@@ -132,13 +132,13 @@ public class SysUserController {
         map.put("start", pageBean.getStart());
         map.put("size", pageBean.getPageSize());
         List<UserProperty> userDetailList = sysUserService.findUserDetails(map);
-//        Long total = sysUserService.getTotalUser(map);
-//        JSONObject result = new JSONObject();
-//        JSONArray jsonArray = JSONArray.fromObject(userList);
-//        result.put("rows", jsonArray);
-//        result.put("total", total);
-//        log.info("request: user/list , map: " + map.toString());
-//        ResponseUtil.write(response, result);
+        Long total = sysUserService.getTotalUserDetail(map);
+        JSONObject result = new JSONObject();
+        JSONArray jsonArray = JSONArray.fromObject(userDetailList);
+        result.put("rows", jsonArray);
+        result.put("total", total);
+        log.info("request: userDetail/list , map: " + map.toString());
+        ResponseUtil.write(response, result);
         return null;
     }
 }

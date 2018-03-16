@@ -111,4 +111,8 @@ public class SysUserServiceImpl implements SysUserService {
         return userDao.findUserDetails(map);
     }
 
+    public Long getTotalUserDetail(Map<String, Object> map) {
+        return userDao.getTotalUserDetail(map);
+    }
+
 }
