@@ -5,7 +5,7 @@
     <title>控制台</title>
     <jsp:include page="${pageContext.request.contextPath}/common/page/contentHeader.jsp"/>
 </head>
-<body class="no-skin">
+<body>
 <div class="main-container ace-save-state" id="main-container">
     <script type="text/javascript">
         try{ace.settings.loadState('main-container')}catch(e){}
@@ -36,10 +36,12 @@
                         </strong>
                     </h1>
                 </div>
+                <div class="page-body"></div>
             </div><!-- /.page-content -->
+            <jsp:include page="${pageContext.request.contextPath}/common/page/footer.jsp"/>
         </div>
     </div><!-- /.main-content -->
-    <jsp:include page="${pageContext.request.contextPath}/common/page/footer.jsp"/>
+
 </div><!-- /.main-container -->
 </body>
 </html>

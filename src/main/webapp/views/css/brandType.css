@@ -1,0 +1,8 @@
+#dlg {
+    width: 450px;
+    height:150px;
+    padding: 8px;
+    display: flex;
+    align-items: center;
+    justify-content:center;
+}

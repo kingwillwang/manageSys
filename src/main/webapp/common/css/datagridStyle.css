@@ -4,34 +4,38 @@
 
 .datagrid-header-row,
 .datagrid-row {
-    height: 40px;
+    height: 38px;
 }
 
 .datagrid-header{
-    font-size: 18px;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.datagrid-header .datagrid-cell span {
+    font-size: 16px;
     font-weight: 700;
 }
 
 .datagrid-cell {
-    font-size: 16px;
-    line-height: 40px;
+    font-size: 15px;
+    line-height: 38px;
 }
 .datagrid-cell-rownumber {
     font-size: 15px;
 }
 
 .datagrid .datagrid-pager {
-   height: 40px;
+   height: 38px;
 }
 
 .pagination-info {
-    line-height: 40px;
+    line-height: 38px;
     font-size: 15px;
 }
 
 .pagination table {
-    height: 40px;
-    margin-left: 10px;
+    height: 38px;
 }
 
 .pagination span {
@@ -49,7 +53,7 @@
 
 .datagrid-toolbar {
     font-size: 15px;
-    line-height: 50px;
+    line-height: 40px;
     display: flex;
     justify-content: space-around;
 }
@@ -70,7 +74,7 @@
 }
 
 .panel-title {
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 700;
     color: #2679b5;
     height: 30px;

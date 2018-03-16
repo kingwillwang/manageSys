@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.hk.dao.BrandTypeDao">
+
+    <!-- 一级分类查询 -->
+    <select id="findFirstBrandTypes" parameterType="Map" resultType="com.hk.entity.BrandType">
+        SELECT id,typeName,sortNum,createDate,modifyDate
+        FROM brandtype
+        WHERE sortNum = '0'
+        AND (pid = '' OR pid = NULL)
+        <if test="typeName!=null and typeName!='' ">
+            AND typeName LIKE #{typeName}
+        </if>
+        ORDER BY typeName
+        <if test="start!=null and size!=null">
+            LIMIT #{start},#{size}
+        </if>
+    </select>
+
+    <select id="getTotalFirstBrandType" parameterType="Map" resultType="Long">
+        SELECT COUNT(*) FROM brandtype
+        WHERE sortNum = '0'
+        AND (pid = '' OR pid = NULL)
+        <if test="typeName!=null and typeName!='' ">
+              AND typeName LIKE #{typeName}
+        </if>
+    </select>
+
+    <!-- 根据PID查询二级分类 -->
+    <!--<select id="findBrandTypesByPid" parameterType="String" resultType="com.hk.entity.BrandType">-->
+        <!--SELECT id,-->
+                <!--pid,-->
+                <!--typeName,-->
+                <!--sortNum-->
+        <!--FROM brandtype-->
+        <!--WHERE pid = #{pid}-->
+        <!--AND sortNum = '1'-->
+    <!--</select>-->
+
+    <!-- 二级分类类别 -->
+    <!--<select id="findTwoBrandTypes" resultType="com.hk.entity.BrandType">-->
+        <!--SELECT id,-->
+                <!--pid,-->
+                <!--typeName-->
+        <!--FROM brandtype-->
+        <!--WHERE sortNum = '1'-->
+        <!--AND (pid <![CDATA[ <> ]]> '' OR pid <![CDATA[ <> ]]> NULL)-->
+    <!--</select>-->
+</mapper>

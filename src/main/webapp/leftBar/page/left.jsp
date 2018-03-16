@@ -23,38 +23,16 @@
 
         <li>
             <a href="#" class="dropdown-toggle">
-                <i class="icon-edit"></i>
-                <span class="menu-text"> 表单 </span>
-
+                <i class="icon-list-alt"></i>
+                <span class="menu-text"> 品牌管理 </span>
                 <b class="arrow icon-angle-down"></b>
             </a>
-
             <ul class="submenu">
                 <li>
-                    <a href="#" data-target="menuIframe">
+                    <a href="${pageContext.request.contextPath}/views/page/brandType.jsp" data-target="menuIframe"
+                       data-tab-title="&nbsp;分类类别&nbsp;&nbsp;">
                         <i class="icon-double-angle-right"></i>
-                        表单组件
-                    </a>
-                </li>
-
-                <li>
-                    <a href="#" data-target="menuIframe">
-                        <i class="icon-double-angle-right"></i>
-                        向导提示 &amp; 验证
-                    </a>
-                </li>
-
-                <li>
-                    <a href="#" data-target="menuIframe">
-                        <i class="icon-double-angle-right"></i>
-                        编辑器
-                    </a>
-                </li>
-
-                <li>
-                    <a href="#" data-target="menuIframe">
-                        <i class="icon-double-angle-right"></i>
-                        文件上传
+                        分类类别
                     </a>
                 </li>
             </ul>
