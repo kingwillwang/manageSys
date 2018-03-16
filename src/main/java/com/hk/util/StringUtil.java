@@ -11,7 +11,7 @@ public class StringUtil {
      * @return
      */
     public static boolean isEmpty(String str) {
-        if (str == null || "".equals(str.trim())) {
+        if (str == null || "".equals(str.trim()) || "undefined".equals(str)) {
             return true;
         } else {
             return false;
@@ -23,7 +23,7 @@ public class StringUtil {
      * @return
      */
     public static boolean isNotEmpty(String str) {
-        if ((str != null) && !"".equals(str.trim())) {
+        if ((str != null) && !"".equals(str.trim()) && !"undefined".equals(str)) {
             return true;
         } else {
             return false;

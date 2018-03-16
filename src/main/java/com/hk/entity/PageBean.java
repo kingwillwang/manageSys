@@ -8,7 +8,7 @@ package com.hk.entity;
 public class PageBean {
     private int page; // 页码
     private int pageSize; // 单页数据量
-    private int start;
+    private int start; //开始
 
     public PageBean(int page, int pageSize) {
         super();
@@ -33,7 +33,7 @@ public class PageBean {
     }
 
     public int getStart() {
-        return start;
+        return (page - 1) * pageSize;
     }
 
     public void setStart(int start) {

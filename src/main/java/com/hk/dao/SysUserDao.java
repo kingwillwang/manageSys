@@ -1,6 +1,7 @@
 package com.hk.dao;
 
 import com.hk.entity.SysUser;
+import com.hk.entity.UserProperty;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -19,7 +20,14 @@ public interface SysUserDao {
      * @param user
      * @return
      */
-    public int addUser(SysUser user);
+    public void addUser(SysUser user);
+
+    /**
+     * 添加登录信息
+     * @param userProperty
+     * @return
+     */
+    public void addUserIp(UserProperty userProperty);
 
     /**
      * 登录
@@ -48,7 +56,7 @@ public interface SysUserDao {
      * @param user
      * @return
      */
-    public int updateUser(SysUser user);
+//    public int updateUser(SysUser user);
 
     /**
      * 删除用户
@@ -56,6 +64,14 @@ public interface SysUserDao {
      * @param id
      * @return
      */
-    public int deleteUser(Integer id);
+//    public int deleteUser(Integer id);
 
+    /**
+     * 根据用户名查询
+     * @author willwang
+     * @date 2018/3/16 15:29
+     * @param
+     * @return
+     */
+    public SysUser findUserByUserName (String userName);
 }

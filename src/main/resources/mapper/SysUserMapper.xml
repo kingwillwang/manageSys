@@ -8,6 +8,7 @@
         <result property="id" column="id"/>
         <result property="userName" column="userName"/>
         <result property="password" column="password"/>
+        <result property="createDate" column="createDate"/>
     </resultMap>
 
     <!-- 用户登录 -->
@@ -20,13 +21,26 @@
 
     <!-- 添加用户 -->
     <insert id="addUser" parameterType="com.hk.entity.SysUser">
-        INSERT INTO sysUser(id,userName,password)
-        VALUES (#{id},#{userName},#{password})
+        INSERT INTO sysUser(id,userName,password,createDate)
+        VALUES (#{id},#{userName},#{password},#{createDate})
+    </insert>
+
+    <!-- 根据用户名查询 -->
+    <select id="findUserByUserName" parameterType="String" resultMap="UserResult">
+        SELECT id,userName,password
+        FROM sysUser
+        WHERE userName = #{userName}
+    </select>
+
+    <!-- 添加登录信息 -->
+    <insert id="addUserIp" parameterType="com.hk.entity.UserProperty">
+        INSERT INTO userproperty(id,userId,loginTime,loginIp)
+        VALUES (#{id},#{userId},#{loginTime},#{loginIp})
     </insert>
 
     <!-- 查询用户 -->
     <select id="findUsers" parameterType="Map" resultMap="UserResult">
-            SELECT id,userName,password from sysuser
+            SELECT id,userName,password,createDate from sysuser
         <where>
             <if test="userName!=null and userName!='' ">
                 AND userName LIKE #{userName}

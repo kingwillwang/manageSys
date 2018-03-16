@@ -8,6 +8,7 @@ import com.hk.service.SysUserService;
 import com.hk.util.MD5Util;
 import com.hk.util.ResponseUtil;
 import com.hk.util.StringUtil;
+import com.hk.util.UserUtil;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import org.apache.log4j.Logger;
@@ -15,6 +16,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.HashMap;
 import java.util.List;
@@ -36,12 +38,13 @@ public class SysUserController {
 
     /**
      * 登录
+     *
      * @param user
      * @return
      */
     @RequestMapping(value = "/cookie", method = RequestMethod.POST)
     @ResponseBody
-    public Result login(SysUser user) {
+    public Result login(SysUser user, HttpServletRequest request) {
         try {
             String MD5pwd = MD5Util.MD5Encode(user.getPassword(), "UTF-8");
             user.setPassword(MD5pwd);
@@ -54,6 +57,8 @@ public class SysUserController {
             return ResultGenerator.genFailResult("请认真核对账号、密码！");
         } else {
             resultUser.setPassword("PASSWORD");
+            String loginIp = UserUtil.getIpAddr(request);
+            sysUserService.addUserProperty(resultUser.getId(), loginIp);
             Map map = new HashMap();
             map.put("currentUser", resultUser);
             return ResultGenerator.genSuccessResult(map);
@@ -62,6 +67,7 @@ public class SysUserController {
 
     /**
      * 用户列表
+     *
      * @param sysUser
      * @param response
      * @return
@@ -94,15 +100,18 @@ public class SysUserController {
      */
     @RequestMapping(value = "", method = RequestMethod.POST)
     @ResponseBody
-    public Result save(@RequestBody SysUser user) throws Exception {
-        int resultTotal = 0;
+    public Result save(@RequestBody SysUser user) {
         String MD5pwd = MD5Util.MD5Encode(user.getPassword(), "UTF-8");
         user.setPassword(MD5pwd);
-        resultTotal = sysUserService.addUser(user);
-        if (resultTotal > 0) {
+        int resultTotal = sysUserService.addUser(user);
+        if (resultTotal == 1) {
             return ResultGenerator.genSuccessResult();
+        } else if (resultTotal == 2) {
+            return ResultGenerator.genBadResult("用户已存在！");
+        } else if (resultTotal == 0){
+            return ResultGenerator.genBadResult("用户名或密码不能为空！");
         } else {
-            return ResultGenerator.genFailResult("FAIL");
+            return ResultGenerator.genFailResult("操作失败！");
         }
     }
 }

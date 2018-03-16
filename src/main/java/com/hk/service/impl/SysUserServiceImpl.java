@@ -2,8 +2,11 @@ package com.hk.service.impl;
 
 import com.hk.dao.SysUserDao;
 import com.hk.entity.SysUser;
+import com.hk.entity.UserProperty;
 import com.hk.service.SysUserService;
 import com.hk.util.AntiXssUtil;
+import com.hk.util.DateUtil;
+import com.hk.util.StringUtil;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -24,31 +27,33 @@ public class SysUserServiceImpl implements SysUserService {
 
     /**
      * 用户登录
-     * @author willwang
-     * @date 2018/3/12 13:23
+     *
      * @param
      * @return
+     * @author willwang
+     * @date 2018/3/12 13:23
      */
     public SysUser login(SysUser user) {
         return userDao.login(user);
     }
 
     /**
-     *查询用户
-     * @author willwang
-     * @date 2018/3/12 17:13
+     * 查询用户
+     *
      * @param
      * @return
+     * @author willwang
+     * @date 2018/3/12 17:13
      */
     public List<SysUser> findUser(Map<String, Object> map) {
         return userDao.findUsers(map);
     }
 
     /**
-     * @author willwang
-     * @date 2018/3/12 17:14
      * @param
      * @return
+     * @author willwang
+     * @date 2018/3/12 17:14
      */
     public Long getTotalUser(Map<String, Object> map) {
         return userDao.getTotalUser(map);
@@ -56,18 +61,43 @@ public class SysUserServiceImpl implements SysUserService {
 
     /**
      * 增加用户
-     * @author willwang
-     * @date 2018/3/12 11:08
+     *
      * @param
      * @return
+     * @author willwang
+     * @date 2018/3/12 11:08
      */
     public int addUser(SysUser user) {
-        if (user.getUserName() == null || user.getPassword() == null) {
-            return 0;
+        if (StringUtil.isEmpty(user.getUserName()) || StringUtil.isEmpty(user.getPassword())) {
+            return 0;//用户名或者密码为空
         }
-        user.setId(UUID.randomUUID().toString());
-        user.setUserName(AntiXssUtil.replaceHtmlCode(user.getUserName()));
-        return userDao.addUser(user);
+        SysUser sysUser = userDao.findUserByUserName(user.getUserName());
+        if (sysUser != null) {
+            return 2;//用户已存在
+        } else {
+            user.setId(UUID.randomUUID().toString());
+            user.setUserName(AntiXssUtil.replaceHtmlCode(user.getUserName()));
+            user.setCreateDate(DateUtil.getCurrentDateStr());
+            userDao.addUser(user);
+            return 1;//创建成功
+        }
+    }
+
+    /**
+     * 增加用户登录信息
+     *
+     * @param
+     * @return
+     * @author willwang
+     * @date 2018/3/12 11:08
+     */
+    public void addUserProperty(String userId, String ip) {
+        UserProperty userProperty = new UserProperty();
+        userProperty.setId(UUID.randomUUID().toString());
+        userProperty.setUserId(userId);
+        userProperty.setLoginTime(DateUtil.getCurrentDateStr());
+        userProperty.setLoginIp(ip);
+        userDao.addUserIp(userProperty);
     }
 
 }

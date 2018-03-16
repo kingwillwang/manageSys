@@ -32,4 +32,14 @@ public class ResultGenerator {
         return result;
     }
 
+    public static Result genBadResult(String message) {
+        Result result = new Result();
+        result.setResultCode(Constants.RESULT_CODE_BAD_REQUEST);
+        if (message == null || message.length() < 1) {
+            message = DEFAULT_FAIL_MESSAGE;
+        }
+        result.setMessage(message);
+        return result;
+    }
+
 }

@@ -11,6 +11,7 @@ public class SysUser {
     private String id;
     private String userName;
     private String password;
+    private String createDate;
 
     private List<UserProperty> userPropertyList;
 
@@ -36,6 +37,14 @@ public class SysUser {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getCreateDate() {
+        return createDate;
+    }
+
+    public void setCreateDate(String createDate) {
+        this.createDate = createDate;
     }
 
     public List<UserProperty> getUserPropertyList() {

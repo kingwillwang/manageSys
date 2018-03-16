@@ -12,10 +12,11 @@ function openUserAddDialog() {
     $("#userAddDlg").dialog("open").dialog("setTitle", "添加用户");
 }
 
+//保存用户
 function saveUser() {
     var userName = $("#userName").val();
     var password = $("#password").val();
-    var data = {"password": password, "userName": userName}
+    var data = {"password": password, "userName": userName};
     $.ajax({
         type: "POST",
         dataType: "json",
@@ -23,14 +24,13 @@ function saveUser() {
         contentType: "application/json; charset=utf-8",
         data: JSON.stringify(data),
         success: function (result) {
-            console.log(result);//打印服务端返回的数据
             if (result.resultCode == 200) {
                 $.messager.alert("系统提示", "保存成功");
                 $("#userAddDlg").dialog("close");
                 $("#userTable").datagrid("reload");
                 resetValue();
             } else {
-                $.messager.alert("系统提示", "操作失败");
+                $.messager.alert("系统提示", result.message);
                 $("#userAddDlg").dialog("close");
                 resetValue();
             }

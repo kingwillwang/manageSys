@@ -9,7 +9,7 @@ public class UserProperty {
     private String id;
     private String userId;
     private String loginTime;
-    private String loginIP;
+    private String loginIp;
 
     public String getId() {
         return id;
@@ -35,11 +35,11 @@ public class UserProperty {
         this.loginTime = loginTime;
     }
 
-    public String getLoginIP() {
-        return loginIP;
+    public String getLoginIp() {
+        return loginIp;
     }
 
-    public void setLoginIP(String loginIP) {
-        this.loginIP = loginIP;
+    public void setLoginIp(String loginIp) {
+        this.loginIp = loginIp;
     }
 }
