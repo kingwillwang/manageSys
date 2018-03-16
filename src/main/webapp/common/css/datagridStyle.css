@@ -1,0 +1,90 @@
+.datagrid .panel-body {
+    border: 0;
+}
+
+.datagrid-header-row,
+.datagrid-row {
+    height: 40px;
+}
+
+.datagrid-header{
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.datagrid-cell {
+    font-size: 16px;
+    line-height: 40px;
+}
+.datagrid-cell-rownumber {
+    font-size: 15px;
+}
+
+.datagrid .datagrid-pager {
+   height: 40px;
+}
+
+.pagination-info {
+    line-height: 40px;
+    font-size: 15px;
+}
+
+.pagination table {
+    height: 40px;
+    margin-left: 10px;
+}
+
+.pagination span {
+    font-size: 15px;
+}
+
+.pagination-page-list{
+    font-size: 15px;
+}
+
+.pagination .pagination-num {
+    font-size: 15px;
+    text-align: center;
+}
+
+.datagrid-toolbar {
+    font-size: 15px;
+    line-height: 50px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.toolLeft {
+    width: 50%;
+}
+
+.toolRight {
+    width: 50%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.l-btn-text {
+    font-size: 15px;
+}
+
+.panel-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: #2679b5;
+    height: 30px;
+    line-height: 30px;
+    padding-left: 10px;
+}
+
+.window .window-body {
+    border: 0;
+}
+
+.dialog-toolbar, .dialog-button {
+    margin-top: 5px;
+    border-bottom: 0;
+    border-left: 0;
+    border-right: 0;
+}
