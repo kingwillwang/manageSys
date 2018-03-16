@@ -41,21 +41,6 @@ function saveUser() {
     });
 }
 
-function openWatchUserDialog() {
-    var selectedRows = $("#userTable").datagrid('getSelections');
-    if (selectedRows.length != 1) {
-        $.messager.alert("系统提示", "请选择一条要查看的数据！");
-        return;
-    } else {
-        var row = selectedRows[0];
-        $('#win-detail').window('open');
-        // $('#fm').form('load', row);
-        // $("#password").val("******");
-        // $("#userId").val(row.id);
-        method = "PUT";
-    }
-}
-
 //重置
 function resetValue() {
     $("#userName").val("");
@@ -66,4 +51,18 @@ function resetValue() {
 function closeUserDialog() {
     $("#userAddDlg").dialog("close");
     resetValue();
+}
+
+function openWatchUserDialog() {
+    var selectedRows = $("#userTable").datagrid('getSelections');
+    if (selectedRows.length != 1) {
+        $.messager.alert("系统提示", "请选择一条要查看的数据！");
+        return null;
+    } else {
+        var row = selectedRows[0];
+        $('#user-detail').window('open');
+        $('#dg').datagrid({
+            url: baseUrl + "/user",
+        });
+    }
 }

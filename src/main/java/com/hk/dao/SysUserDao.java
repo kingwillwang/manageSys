@@ -74,4 +74,13 @@ public interface SysUserDao {
      * @return
      */
     public SysUser findUserByUserName (String userName);
+
+    /**
+     * 查询用户详情
+     * @author willwang
+     * @date 2018/3/16 17:30
+     * @param
+     * @return
+     */
+    public List<UserProperty> findUserDetails(Map<String, Object> map);
 }

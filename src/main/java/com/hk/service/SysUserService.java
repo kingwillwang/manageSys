@@ -46,4 +46,13 @@ public interface SysUserService {
      * @return
      */
     public void addUserProperty(String userId, String ip);
+
+    /**
+     * 查询用户详情
+     * @author willwang
+     * @date 2018/3/16 17:29
+     * @param
+     * @return
+     */
+    public List<UserProperty> findUserDetails(Map<String, Object> map);
 }

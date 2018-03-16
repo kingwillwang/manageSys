@@ -100,4 +100,15 @@ public class SysUserServiceImpl implements SysUserService {
         userDao.addUserIp(userProperty);
     }
 
+    /**
+     * 查询用户详情
+     * @author willwang
+     * @date 2018/3/16 17:33
+     * @param
+     * @return
+     */
+    public List<UserProperty> findUserDetails(Map<String, Object> map) {
+        return userDao.findUserDetails(map);
+    }
+
 }

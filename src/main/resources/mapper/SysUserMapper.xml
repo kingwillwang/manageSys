@@ -80,4 +80,17 @@
         where id=#{id}
     </delete>
 
+    <!-- 查询用户详情 -->
+    <select id="findUserDetails" parameterType="Map" resultMap="com.hk.entity.UserProperty">
+        SELECT id,userId,loginTime,loginIp from userproperty
+        <where>
+            <if test="userId!=null and userId!='' ">
+                AND userId = #{userId}
+            </if>
+        </where>
+        <if test="start!=null and size!=null">
+            LIMIT #{start},#{size}
+        </if>
+    </select>
+
 </mapper>

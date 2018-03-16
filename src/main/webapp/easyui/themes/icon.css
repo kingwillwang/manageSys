@@ -1,3 +1,13 @@
+/*
+JQuery EasyUI 1.5.x of Insdep Theme 1.0.0
+演示地址：https://www.insdep.com/example/
+下载地址：https://www.insdep.com
+问答地址：https://bbs.insdep.com
+
+项目地址：http://git.oschina.net/weavors/JQuery-EasyUI-1.5.x-Of-Insdep-Theme
+
+QQ交流群：184075694 （优先发布更新主题及内测包）
+*/
 .icon-blank{
 	background:url('icons/blank.gif') no-repeat center center;
 }
@@ -67,16 +77,47 @@
 .icon-more{
 	background:url('icons/more.png') no-repeat center center;
 }
+.icon-set{
+	background:url('icons/set.png') no-repeat center center;
+}
+.icon-cog{
+	background:url('icons/cog.png') no-repeat center center;
+}
+.icon-lock-password{
+	background:url('icons/lock_password.png') no-repeat center center;
+}
+.icon-lock-go{
+	background:url('icons/lock_go.png') no-repeat center center;
+}
+.icon-refresh{
+	background:url('icons/arrow_refresh.png') no-repeat center center;
+}
+.icon-sort{
+	background:url('icons/sort_number.png') no-repeat center center;
+}
+.icon-repair{
+	background:url('icons/wrench.png') no-repeat center center;
+}
+
+.icon-folder-search{
+	background:url('icons/folder_search.png') no-repeat center center;
+}
+.icon-user-config{
+	background:url('icons/user_config.png') no-repeat center center;
+}
+.icon-recover-deleted-items{
+	background:url('icons/recover_deleted_items.png') no-repeat center center;
+}
 
 
 .icon-mini-add{
-	background:url('icons/mini_add.png') no-repeat center center;
+	background:url('icons/mini-append.png') no-repeat center center;
 }
 .icon-mini-edit{
-	background:url('icons/mini_edit.png') no-repeat center center;
+	background:url('icons/mini-pencil.png') no-repeat center center;
 }
 .icon-mini-refresh{
-	background:url('icons/mini_refresh.png') no-repeat center center;
+	background:url('icons/mini-reload.png') no-repeat center center;
 }
 
 .icon-large-picture{

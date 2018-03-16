@@ -38,8 +38,8 @@
                     <thead>
                         <tr>
                             <th field="cb" checkbox="true" align="center"></th>
-                            <th field="id" width="50" align="center">编号</th>
                             <th field="userName" width="50" align="center">用户名</th>
+                            <th field="createDate" width="50" align="center">创建时间</th>
                         </tr>
                     </thead>
                 </table>
@@ -51,8 +51,8 @@
                     </div>
                     <div class="toolRight">
                         <a href="javascript:openUserAddDialog()" class="easyui-linkbutton" iconCls="icon-add" plain="true">添加</a>
-                        <a href="javascript:openUserModifyDialog()" class="easyui-linkbutton" iconCls="icon-edit" plain="true">修改</a>
-                        <a href="javascript:deleteUser()" class="easyui-linkbutton" iconCls="icon-remove" plain="true">删除</a>
+                        <span>|</span>
+                        <a href="javascript:openWatchUserDialog()" class="easyui-linkbutton" iconCls="icon-user-config" plain="true">查看详情</a>
                     </div>
                 </div>
 
@@ -76,6 +76,18 @@
                 <div id="dlg-buttons">
                     <a href="javascript:saveUser()" class="easyui-linkbutton" iconCls="icon-ok">保存</a>
                     <a href="javascript:closeUserDialog()" class="easyui-linkbutton" iconCls="icon-cancel">取消</a>
+                </div>
+
+                <div id="user-detail" class="easyui-window" title="登录详情" style="width:300px;height:100px;padding:5px;" closed="true">
+                    <table id="detailTable" class="easyui-datagrid" pagination="true" fitColumns="true" rownumbers="true"
+                           scrollbarSize="0"  singleSelect="true" pageSize="10" striped="true">
+                        <thead>
+                            <tr>
+                                <th field="loginTime" width="50" align="center">登陆时间</th>
+                                <th field="loginIp" width="50" align="center">登录IP</th>
+                            </tr>
+                        </thead>
+                    </table>
                 </div>
             </div>
         </div>

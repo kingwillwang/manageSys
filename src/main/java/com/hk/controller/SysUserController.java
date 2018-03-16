@@ -4,6 +4,7 @@ import com.hk.common.Result;
 import com.hk.common.ResultGenerator;
 import com.hk.entity.PageBean;
 import com.hk.entity.SysUser;
+import com.hk.entity.UserProperty;
 import com.hk.service.SysUserService;
 import com.hk.util.MD5Util;
 import com.hk.util.ResponseUtil;
@@ -113,5 +114,31 @@ public class SysUserController {
         } else {
             return ResultGenerator.genFailResult("操作失败！");
         }
+    }
+
+    /**
+     * 用户详情
+     * @author willwang
+     * @date 2018/3/16 17:34
+     * @param
+     * @return
+     */
+    @RequestMapping(value = "/userDetail", method = RequestMethod.POST)
+    @ResponseBody
+    public String list(@RequestParam(value = "page", required = false) String page, @RequestParam(value = "rows", required = false) String rows, String userId, HttpServletResponse response) throws Exception {
+        PageBean pageBean = new PageBean(Integer.parseInt(page), Integer.parseInt(rows));
+        Map<String, Object> map = new HashMap<String, Object>();
+        map.put("userId", userId);
+        map.put("start", pageBean.getStart());
+        map.put("size", pageBean.getPageSize());
+        List<UserProperty> userDetailList = sysUserService.findUserDetails(map);
+//        Long total = sysUserService.getTotalUser(map);
+//        JSONObject result = new JSONObject();
+//        JSONArray jsonArray = JSONArray.fromObject(userList);
+//        result.put("rows", jsonArray);
+//        result.put("total", total);
+//        log.info("request: user/list , map: " + map.toString());
+//        ResponseUtil.write(response, result);
+        return null;
     }
 }
