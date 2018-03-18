@@ -26,4 +26,11 @@ public interface BrandTypeService {
      */
     public Long getTotalFirstBrandType(Map<String, Object> map);
 
+    /**
+     * 增加
+     * @param brandType
+     * @return
+     */
+    public int addBrandType(BrandType brandType);
+
 }

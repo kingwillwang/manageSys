@@ -28,6 +28,29 @@
         </if>
     </select>
 
+    <!-- 根据用户名查询 -->
+    <select id="findBrandTypeByName" parameterType="String" resultType="String">
+        SELECT typeName
+        FROM brandtype
+        WHERE typeName = #{typeName}
+    </select>
+
+    <!-- 添加 -->
+    <insert id="addBrandType" parameterType="com.hk.entity.BrandType">
+        INSERT INTO brandtype(id,createDate,modifyDate,
+        <if test="pid!=null and pid!='' ">
+            pid,
+        </if>
+        typeName,sortNum)
+        VALUES (#{id},#{createDate},#{modifyDate},
+        <if test="pid!=null and pid!='' ">
+            #{pid},
+        </if>
+        #{typeName},#{sortNum})
+    </insert>
+
+
+
     <!-- 根据PID查询二级分类 -->
     <!--<select id="findBrandTypesByPid" parameterType="String" resultType="com.hk.entity.BrandType">-->
         <!--SELECT id,-->

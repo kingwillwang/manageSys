@@ -26,6 +26,20 @@ public interface BrandTypeDao {
      */
     public Long getTotalFirstBrandType(Map<String, Object> map);
 
+    /**
+     * 增加类型
+     * @param brandType
+     */
+    public void addBrandType(BrandType brandType);
+
+    /**
+     * 根据名称查询
+     * @param typeName
+     * @return
+     */
+    public String findBrandTypeByName(String typeName);
+
+
     //根据PID查询二级分类
 //    List<BrandType> findBrandTypesByPid(String pid);
 

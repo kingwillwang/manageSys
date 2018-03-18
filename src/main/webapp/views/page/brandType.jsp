@@ -33,64 +33,62 @@
                     </h1>
                 </div>
                 <div class="page-body">
-                    <table id="dg-table" class="easyui-datagrid" pagination="true" fitColumns="true" rownumbers="true"
-                            url="${pageContext.request.contextPath}/brandType/firstTypeList" singleSelect="true"
-                           pageSize="10" toolbar="#barTools" striped="true" fit="true">
+                    <table id="dg-table-first" class="easyui-datagrid" pagination="true" fitColumns="true" rownumbers="true"
+                           url="${pageContext.request.contextPath}/brandType/firstTypeList" pageSize="10" toolbar="#barTools-first"
+                           striped="true" fit="true">
                         <thead>
                         <tr>
                             <th field="cb" checkbox="true" align="center"></th>
                             <th field="typeName" width="20" align="center">类型</th>
-                            <th field="createDate" align="center">创建时间</th>
-                            <th field="modifyDate" align="center">修改时间</th>
+                            <th field="createDate" width="20" align="center">创建时间</th>
+                            <th field="modifyDate" width="20" align="center">修改时间</th>
                         </tr>
                         </thead>
                     </table>
-                    <div id="barTools">
+                    <div id="barTools-first">
                         <div class="toolLeft">
                             &nbsp;&nbsp;类型：&nbsp;
-                            <input type="text" id="s_typeName" size="20" onkeydown="if(event.keyCode==13) searchFirstTypes()"/>
+                            <input type="text" id="s_typeName-first" size="20" onkeydown="if(event.keyCode==13) searchFirstTypes()"/>
                             <a href="javascript:searchFirstTypes()" class="easyui-linkbutton" iconCls="icon-search" plain="true">查询</a>
                         </div>
                         <div class="toolRight">
-                            <a href="javascript:openUserAddDialog()" class="easyui-linkbutton" iconCls="icon-add" plain="true">添加</a>
+                            <a href="javascript:openAddFirstType()" class="easyui-linkbutton" iconCls="icon-add" plain="true">添加</a>
                             <span>|</span>
-                            <a href="javascript:openWatchUserDialog()" class="easyui-linkbutton" iconCls="icon-user-config" plain="true">查看详情</a>
+                            <a href="javascript:openModifyFirstType()" class="easyui-linkbutton" iconCls="icon-edit" plain="true">修改</a>
+                            <span>|</span>
+                            <a href="javascript:deleteFirstType()" class="easyui-linkbutton" iconCls="icon-remove" plain="true">删除</a>
+                            <span>|</span>
+                            <a href="javascript:openWatchSecondTypes()" class="easyui-linkbutton" iconCls="icon-set" plain="true">分类详情</a>
                         </div>
                     </div>
-                </div>
-                <%--<div id="dlg" class="easyui-dialog" closed="true" buttons="#dlg-buttons">--%>
-                    <%--<form id="fm" method="post" class="form-horizontal" style="overflow: hidden;width: 100%">--%>
-                        <%--<div class="form-group">--%>
-                            <%--<label class="col-sm-2 control-label">用户名:</label>--%>
-                            <%--<div class="col-sm-10">--%>
-                                <%--<input type="text" class="form-control" id="userName" name="userName" required placeholder="请输入名字">--%>
-                            <%--</div>--%>
-                        <%--</div>--%>
-                        <%--<div class="form-group">--%>
-                            <%--<label class="col-sm-2 control-label">密&nbsp;&nbsp;&nbsp;码:</label>--%>
-                            <%--<div class="col-sm-10">--%>
-                                <%--<input type="password" class="form-control" id="password" name="password" required placeholder="请输入密码">--%>
-                            <%--</div>--%>
-                        <%--</div>--%>
-                    <%--</form>--%>
-                <%--</div>--%>
+                    <div id="dlg-first" class="easyui-dialog" closed="true" buttons="#dlg-buttons-first">
+                        <form id="fm-first" method="post" class="form-horizontal" style="overflow: hidden;width: 100%">
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">分类名称:</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="typeName-first" name="typeName" required
+                                           placeholder="请输入分类类型名称">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div id="dlg-buttons-first">
+                        <a href="javascript:saveFirstBrandType()" class="easyui-linkbutton" iconCls="icon-ok">保存</a>
+                        <a href="javascript:closeFirstDialog()" class="easyui-linkbutton" iconCls="icon-cancel">取消</a>
+                    </div>
 
-                <%--<div id="dlg-buttons">--%>
-                    <%--<a href="javascript:saveUser()" class="easyui-linkbutton" iconCls="icon-ok">保存</a>--%>
-                    <%--<a href="javascript:closeUserDialog()" class="easyui-linkbutton" iconCls="icon-cancel">取消</a>--%>
-                <%--</div>--%>
-
-                <%--<div id="win-detail" class="easyui-window" title="登录详情" style="width:650px;height:560px;padding:5px;" closed="true">--%>
+                    <%--<div id="win-detail" class="easyui-window" title="登录详情" style="width:650px;height:560px;padding:5px;" closed="true">--%>
                     <%--<table id="detailTable" class="easyui-datagrid" pagination="true" fitColumns="true" rownumbers="true"--%>
-                           <%--scrollbarSize="0"  singleSelect="true" pageSize="10" striped="true">--%>
-                        <%--<thead>--%>
-                            <%--<tr>--%>
-                                <%--<th field="loginTime" width="50" align="center">登陆时间</th>--%>
-                                <%--<th field="loginIp" width="50" align="center">登录IP</th>--%>
-                            <%--</tr>--%>
-                        <%--</thead>--%>
+                    <%--scrollbarSize="0"  singleSelect="true" pageSize="10" striped="true">--%>
+                    <%--<thead>--%>
+                    <%--<tr>--%>
+                    <%--<th field="loginTime" width="50" align="center">登陆时间</th>--%>
+                    <%--<th field="loginIp" width="50" align="center">登录IP</th>--%>
+                    <%--</tr>--%>
+                    <%--</thead>--%>
                     <%--</table>--%>
-                <%--</div>--%>
+                    <%--</div>--%>
+                </div>
             </div>
             <jsp:include page="${pageContext.request.contextPath}/common/page/footer.jsp"/>
         </div>
