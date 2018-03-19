@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.hk.dao.FriendlyLinkDao">
+
+    <!-- 查询 -->
+    <select id="getLinkList" parameterType="Map" resultType="com.hk.entity.FriendlyLink">
+        SELECT id,linkName,linkUrl,createDate,modifyDate
+        FROM friendlylink
+        <where>
+            <if test="linkName!=null and linkName!='' ">
+                AND linkName LIKE #{linkName}
+            </if>
+        </where>
+        ORDER BY linkName DESC
+        <if test="start!=null and size!=null">
+            LIMIT #{start},#{size}
+        </if>
+    </select>
+
+    <select id="getTotalLinks" parameterType="Map" resultType="Long">
+        SELECT COUNT(*) FROM friendlylink
+        <where>
+            <if test="linkName!=null and linkName!='' ">
+                AND linkName LIKE #{linkName}
+            </if>
+        </where>
+    </select>
+
+</mapper>

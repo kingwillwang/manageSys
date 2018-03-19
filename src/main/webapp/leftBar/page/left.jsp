@@ -35,9 +35,29 @@
                         分类类别
                     </a>
                 </li>
+                <li>
+                    <a href="${pageContext.request.contextPath}/views/page/website.jsp" data-target="menuIframe"
+                       data-tab-title="&nbsp;品牌详情&nbsp;&nbsp;">
+                        <i class="icon-double-angle-right"></i>
+                        品牌详情
+                    </a>
+                </li>
             </ul>
         </li>
-
+        <li>
+            <a href="${pageContext.request.contextPath}/views/page/friendlyLink.jsp" data-target="menuIframe"
+               data-tab-title="&nbsp;友情链接&nbsp;&nbsp;">
+                <i class="icon-link"></i>
+                <span class="menu-text"> 友情链接 </span>
+            </a>
+        </li>
+        <li>
+            <a href="${pageContext.request.contextPath}/views/page/keyWords.jsp" data-target="menuIframe"
+               data-tab-title="&nbsp;关键字管理&nbsp;&nbsp;">
+                <i class="icon-key"></i>
+                <span class="menu-text"> 关键字管理 </span>
+            </a>
+        </li>
     </ul>
     <!-- 折叠 -->
     <div class="sidebar-collapse" id="sidebar-collapse">

@@ -11,6 +11,8 @@ public class FriendlyLink implements Serializable {
     private String id;
     private String linkName;
     private String linkUrl;
+    private String createDate;
+    private String modifyDate;
 
     public String getId() {
         return id;
@@ -34,5 +36,21 @@ public class FriendlyLink implements Serializable {
 
     public void setLinkUrl(String linkUrl) {
         this.linkUrl = linkUrl;
+    }
+
+    public String getCreateDate() {
+        return createDate;
+    }
+
+    public void setCreateDate(String createDate) {
+        this.createDate = createDate;
+    }
+
+    public String getModifyDate() {
+        return modifyDate;
+    }
+
+    public void setModifyDate(String modifyDate) {
+        this.modifyDate = modifyDate;
     }
 }
