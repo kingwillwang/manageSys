@@ -28,4 +28,46 @@
         </where>
     </select>
 
+    <!-- 添加 -->
+    <insert id="addLinks" parameterType="com.hk.entity.FriendlyLink">
+        INSERT INTO friendlylink(id,linkName,linkUrl,createDate,modifyDate)
+        VALUES (#{id},#{linkName},#{linkUrl},#{createDate},#{modifyDate})
+    </insert>
+
+    <select id="findLinkNameIsExist" parameterType="String" resultType="Long">
+        SELECT COUNT(*)
+        FROM friendlylink
+        WHERE linkName = #{linkName}
+    </select>
+
+    <!-- 根据ID查询 -->
+    <select id="findLinkById" parameterType="String" resultType="com.hk.entity.FriendlyLink">
+        SELECT id,linkName,linkUrl,createDate,modifyDate
+        FROM friendlylink
+        WHERE id = #{id}
+    </select>
+
+    <!-- 修改 -->
+    <update id="updateLink" parameterType="com.hk.entity.FriendlyLink">
+        update friendlylink
+        <set>
+            <if test="modifyDate!=null and modifyDate!='' ">
+                modifyDate=#{modifyDate},
+            </if>
+            <if test="linkName!=null and linkName!='' ">
+                linkName=#{linkName},
+            </if>
+            <if test="linkUrl!=null and linkUrl!='' ">
+                linkUrl=#{linkUrl}
+            </if>
+        </set>
+        where id=#{id}
+    </update>
+
+    <delete id="deleteLinks" parameterType="String">
+        delete from friendlylink where id in
+        <foreach item="linkId" collection="array" open="(" separator="," close=")">
+            #{linkId}
+        </foreach>
+    </delete>
 </mapper>

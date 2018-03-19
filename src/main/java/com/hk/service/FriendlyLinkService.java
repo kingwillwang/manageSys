@@ -25,4 +25,24 @@ public interface FriendlyLinkService {
      * @return
      */
     public Long getTotalLink(Map<String, Object> map);
+
+    /**
+     * 增加
+     * @param friendlyLink
+     * @return
+     */
+    public int addLink(FriendlyLink friendlyLink);
+
+    /**
+     * 修改
+     * @param friendlyLink
+     * @return
+     */
+    public int updateLink(FriendlyLink friendlyLink);
+
+    /**
+     * 删除
+     * @param ids
+     */
+    public void deleteLinksById(String[] ids);
 }

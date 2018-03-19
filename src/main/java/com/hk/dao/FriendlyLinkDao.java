@@ -24,6 +24,20 @@ public interface FriendlyLinkDao {
     public void addLinks(FriendlyLink friendlyLink);
 
     /**
+     * 判断名称是否存在
+     * @param linkName
+     * @return
+     */
+    public Long findLinkNameIsExist(String linkName);
+
+    /**
+     * 根据Id查询
+     * @param id
+     * @return
+     */
+    public FriendlyLink findLinkById(String id);
+
+    /**
      * 查询
      * @author willwang
      * @date 2018/3/19 16:24

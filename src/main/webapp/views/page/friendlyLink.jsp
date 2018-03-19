@@ -61,6 +61,7 @@
                     </div>
                     <div id="link-dlg" class="easyui-dialog" closed="true" buttons="#dlg-buttons">
                         <form id="fm" method="post" class="form-horizontal" style="overflow: hidden;width: 100%">
+                            <input type="hidden" id="linkId" name="id">
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">名&nbsp;&nbsp;称:</label>
                                 <div class="col-sm-10">

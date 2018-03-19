@@ -27,7 +27,7 @@ import java.util.Map;
  */
 @Controller
 @RequestMapping("/friendlyLink")
-public class FriendlyLinkController {
+public class  FriendlyLinkController {
 
     @Resource
     private FriendlyLinkService friendlyLinkService;
@@ -59,22 +59,30 @@ public class FriendlyLinkController {
     @ResponseBody
     public Result addOrUpdate(@RequestBody FriendlyLink friendlyLink) {
         int resultCode = -1;
-        brandType.setTypeName(AntiXssUtil.replaceHtmlCode(typeName));
-        if (StringUtil.isEmpty(brandType.getId())) {
+        if (StringUtil.isEmpty(friendlyLink.getId())) {
             //新增
-            resultCode = brandTypeService.addBrandType(brandType);
+            resultCode = friendlyLinkService.addLink(friendlyLink);
         } else {
             //修改
-            resultCode = brandTypeService.updateBrandType(brandType);
+            resultCode = friendlyLinkService.updateLink(friendlyLink);
         }
         if (resultCode == 1) {
             return ResultGenerator.genSuccessResult();
         } else if (resultCode == 2) {
-            return ResultGenerator.genBadResult("该类型已存在！");
+            return ResultGenerator.genBadResult("该外练已存在！");
         } else if (resultCode == 0){
-            return ResultGenerator.genBadResult("名称不能为空！");
+            return ResultGenerator.genBadResult("名称或地址不能为空！");
         } else {
             return ResultGenerator.genFailResult("操作失败！");
         }
+    }
+
+    @RequestMapping(value = "/{ids}", method = RequestMethod.DELETE)
+    @ResponseBody
+    public Result deleteLink(@PathVariable(value = "ids") String ids){
+        String[] idsStr = ids.split(",");
+        friendlyLinkService.deleteLinksById(idsStr);
+        log.info("request: friendlyLink/deleteLink , ids: " + ids);
+        return ResultGenerator.genSuccessResult();
     }
 }

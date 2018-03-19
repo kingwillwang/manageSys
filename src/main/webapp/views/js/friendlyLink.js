@@ -14,6 +14,7 @@ function openAddDialog() {
 function resetValue() {
     $("#linkName").val("");
     $("#linkUrl").val("");
+    $("#linkId").val("");
 }
 
 //关闭对话框
@@ -26,12 +27,14 @@ function closeDialog() {
 function saveLink() {
     var linkName = $("#linkName").val();
     var linkUrl = $("#linkUrl").val();
+    var linkId = $("#linkId").val();
     if (linkName == null || linkName == "" || typeof linkName == "undefined"
         || linkUrl == null || linkUrl == "" || typeof linkUrl == "undefined") {
         $.messager.alert("系统提示", "名称或地址不能为空！");
         resetValue();
     } else {
         var data = {
+            "id" : linkId,
             "linkName": linkName,
             "linkUrl": linkUrl
         };
@@ -49,8 +52,8 @@ function saveLink() {
                     resetValue();
                 } else {
                     $.messager.alert("系统提示", result.message);
-                    $("#link-dlg").dialog("close");
-                    resetValue();
+                    // $("#link-dlg").dialog("close");
+                    // resetValue();
                 }
             },
             error: function () {
@@ -70,6 +73,7 @@ function openModifyDialog() {
     var row = selectedRows[0];
     $("#link-dlg").dialog("open").dialog("setTitle", "编辑友情链接");
     $('#fm').form('load', row);
+    $("#linkId").val(row.id);
 }
 
 //删除
