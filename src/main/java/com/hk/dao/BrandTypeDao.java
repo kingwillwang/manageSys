@@ -33,16 +33,62 @@ public interface BrandTypeDao {
     public void addBrandType(BrandType brandType);
 
     /**
-     * 根据名称查询
-     * @param typeName
+     * 根据ID查询
+     * @param id
      * @return
      */
-    public String findBrandTypeByName(String typeName);
+    public BrandType findBrandTypeById(String id);
 
+    /**
+     * 判断名称是否存在
+     * @author willwang
+     * @date 2018/3/19 10:54
+     * @param
+     * @return
+     */
+    public Long findTypeNameIsExist(String typeName);
 
-    //根据PID查询二级分类
-//    List<BrandType> findBrandTypesByPid(String pid);
+    /**
+     * 修改
+     * @author willwang
+     * @date 2018/3/19 9:36
+     * @param
+     * @return
+     */
+    public void updateBrandType(BrandType brandType);
 
-    //查询所有二级分类
-//    List<BrandType> findTwoBrandTypes();
+    /**
+     * 根据PID查询二级分类
+     * @author willwang
+     * @date 2018/3/19 13:18
+     * @param
+     * @return
+     */
+    List<BrandType> findSecondBrandTypesByPid(Map<String, Object> map);
+
+    /**
+     * @author willwang
+     * @date 2018/3/19 13:30
+     * @param
+     * @return
+     */
+    public Long getTotalSecondBrandType(Map<String, Object> map);
+
+    /**
+     * 根据ID删除
+     * @author willwang
+     * @date 2018/3/19 15:37
+     * @param
+     * @return
+     */
+    public void deleteBrandTypesById(String[] ids);
+
+    /**
+     * 根据Pid删除
+     * @author willwang
+     * @date 2018/3/19 15:37
+     * @param
+     * @return
+     */
+    public void deleteBrandTypesByPid(String[] pids);
 }
