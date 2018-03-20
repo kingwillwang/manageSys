@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.hk.dao.WebsiteDao">
+
+    <!-- 查询十大 -->
+    <select id="getTopTenWebsite" parameterType="Map" resultType="com.hk.entity.Website">
+        SELECT id,createDate,modifyDate,websiteName,isTopTen
+        FROM website
+        WHERE isTopTen = '1'
+        ORDER BY websiteSort ASC
+        <if test="start!=null and size!=null">
+            LIMIT #{start},#{size}
+        </if>
+    </select>
+
+    <select id="getTotalTopTen" parameterType="Map" resultType="Long">
+        SELECT COUNT(*) FROM website
+        WHERE isTopTen = '1'
+    </select>
+
+    <!-- 查询不是十大 -->
+    <select id="getNotTopTenWebsite" parameterType="Map" resultType="com.hk.entity.Website">
+        SELECT id,createDate,modifyDate,websiteName,isTopTen
+        FROM website
+        WHERE isTopTen <![CDATA[ <> ]]> '1'
+        <if test="websiteName!=null and websiteName!='' ">
+            AND websiteName LIKE #{websiteName}
+        </if>
+        ORDER BY countNum DESC
+        <if test="start!=null and size!=null">
+            LIMIT #{start},#{size}
+        </if>
+    </select>
+
+    <select id="getTotalNotTopTen" parameterType="Map" resultType="Long">
+        SELECT COUNT(*) FROM website
+        WHERE isTopTen <![CDATA[ <> ]]> '1'
+        <if test="websiteName!=null and websiteName!='' ">
+            AND websiteName LIKE #{websiteName}
+        </if>
+    </select>
+
+    <update id="addTopTen" parameterType="String">
+        UPDATE website
+        SET isTopTen = '1'
+        WHERE id in
+        <foreach item="websiteId" collection="array" open="(" separator="," close=")">
+            #{websiteId}
+        </foreach>
+    </update>
+
+    <update id="removeTopTen" parameterType="String">
+        UPDATE website
+        SET isTopTen = ''
+        WHERE id in
+        <foreach item="websiteId" collection="array" open="(" separator="," close=")">
+            #{websiteId}
+        </foreach>
+    </update>
+
+
+
+
+
+    <!-- 查询所有 -->
+    <select id="getAllWebsite" parameterType="Map" resultType="com.hk.entity.Website">
+        SELECT id,createDate,modifyDate,websiteName,websiteLogo,websiteUrl,websiteSort,isTopTen,countNum,isRecommend
+        FROM website
+        <where>
+            <if test="websiteName!=null and websiteName!='' ">
+                AND websiteName LIKE #{websiteName}
+            </if>
+        </where>
+        ORDER BY websiteSort ASC
+        <if test="start!=null and size!=null">
+            LIMIT #{start},#{size}
+        </if>
+    </select>
+
+    <select id="getTotalWebsite" parameterType="Map" resultType="Long">
+        SELECT COUNT(*) FROM website
+        <where>
+            <if test="websiteName!=null and websiteName!='' ">
+                AND websiteName LIKE #{websiteName}
+            </if>
+        </where>
+    </select>
+
+</mapper>

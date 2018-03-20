@@ -5,7 +5,6 @@ import com.hk.common.ResultGenerator;
 import com.hk.entity.FriendlyLink;
 import com.hk.entity.PageBean;
 import com.hk.service.FriendlyLinkService;
-import com.hk.util.AntiXssUtil;
 import com.hk.util.ResponseUtil;
 import com.hk.util.StringUtil;
 import net.sf.json.JSONArray;
