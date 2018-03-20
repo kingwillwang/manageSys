@@ -60,20 +60,18 @@
         </foreach>
     </update>
 
-
-
-
-
     <!-- 查询所有 -->
     <select id="getAllWebsite" parameterType="Map" resultType="com.hk.entity.Website">
-        SELECT id,createDate,modifyDate,websiteName,websiteLogo,websiteUrl,websiteSort,isTopTen,countNum,isRecommend
+        SELECT id,createDate,modifyDate,websiteName,websiteUrl,countNum
         FROM website
         <where>
             <if test="websiteName!=null and websiteName!='' ">
                 AND websiteName LIKE #{websiteName}
             </if>
         </where>
-        ORDER BY websiteSort ASC
+        <if test="sort!=null and order!=null">
+            ORDER BY ${sort} ${order}
+        </if>
         <if test="start!=null and size!=null">
             LIMIT #{start},#{size}
         </if>

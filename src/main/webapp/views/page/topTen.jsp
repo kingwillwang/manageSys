@@ -5,7 +5,6 @@
     <title>十大品牌管理</title>
     <jsp:include page="${pageContext.request.contextPath}/common/page/contentHeader.jsp"/>
     <jsp:include page="${pageContext.request.contextPath}/common/page/base.jsp"/>
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/views/css/topTen.css">
 </head>
 <body>
 <div class="main-container ace-save-state" id="main-container">
@@ -21,6 +20,7 @@
                         <i class="ace-icon fa fa-home home-icon"></i>
                         首页
                     </li>
+                    <li class="active">品牌管理</li>
                     <li class="active">十大品牌</li>
                 </ul>
             </div>

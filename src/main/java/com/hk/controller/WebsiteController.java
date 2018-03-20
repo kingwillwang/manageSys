@@ -126,13 +126,18 @@ public class WebsiteController {
      */
     @RequestMapping(value = "/allWebsiteList", method = RequestMethod.POST)
     @ResponseBody
-    public String allWebsiteList(@RequestParam(value = "page", required = false) String page, @RequestParam(value = "rows", required = false) String rows,
+    public String allWebsiteList(@RequestParam(value = "page", required = false) String page,
+                                 @RequestParam(value = "rows", required = false) String rows,
+                                 @RequestParam(value = "sort", required = false) String sort,
+                                 @RequestParam(value = "order", required = false) String order,
                                  Website website, HttpServletResponse response) throws Exception {
         PageBean pageBean = new PageBean(Integer.parseInt(page), Integer.parseInt(rows));
         Map<String, Object> map = new HashMap<String, Object>();
         map.put("websiteName", StringUtil.formatLike(website.getWebsiteName()));
         map.put("start", pageBean.getStart());
         map.put("size", pageBean.getPageSize());
+        map.put("sort", sort);
+        map.put("order", order);
         List<Website> allWebsiteList = websiteService.getAllWebsite(map);
         Long total = websiteService.getTotalWebsite(map);
         JSONObject result = new JSONObject();
