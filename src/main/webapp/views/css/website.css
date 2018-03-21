@@ -1,25 +1,31 @@
-#dlg-first {
-    width: 450px;
-    height:150px;
+#dlg {
+    width: 500px;
+    height: 500px;
     padding: 8px;
     display: flex;
     align-items: center;
-    justify-content:center;
+    justify-content: center;
 }
 
-#dlg-first .form-group {
+#dlg .form-group {
+    margin: 15px 5px 0;
+    font-size: 15px;
+    height: 34px;
+}
+
+#dlg .form-group label {
+    font-weight: bold;
+    font-size: 15px;
+    text-align: left;
+}
+
+#dlg .fm-lab {
     margin: 0;
-}
-
-#dlg-second {
-    width: 450px;
-    height:150px;
-    padding: 8px;
+    padding: 0;
+    height: 34px;
     display: flex;
     align-items: center;
-    justify-content:center;
 }
-
-#dlg-second .form-group {
-    margin: 0;
+.tree {
+    overflow: hidden;
 }

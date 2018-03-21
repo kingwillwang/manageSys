@@ -73,4 +73,13 @@ public interface BrandTypeService {
      * @return
      */
     public void deleteTypesByPid(String[] pids);
+
+    /**
+     * 查询所有
+     * @author willwang
+     * @date 2018/3/21 15:24
+     * @param
+     * @return
+     */
+    List<BrandType> findAllBrandTypes();
 }

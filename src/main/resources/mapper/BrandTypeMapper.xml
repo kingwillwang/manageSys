@@ -103,4 +103,11 @@
             #{typePid}
         </foreach>
     </delete>
+
+    <select id="findAllBrandTypes" resultType="com.hk.entity.BrandType">
+        SELECT id,pid,typeName
+        FROM brandtype
+        WHERE sortNum <![CDATA[ <> ]]> ''
+        OR sortNum <![CDATA[ <> ]]> NULL
+    </select>
 </mapper>

@@ -1,3 +1,16 @@
+$(function(){
+    //加载全部节点
+    $('#websiteType').combotree({
+        url: basePath + "/brandType/allTypeList",
+        animate:true,
+        lines:true,
+        onlyLeafCheck:true,
+        loadFilter: function (rows) {
+            return convert(rows);
+        }
+    });
+});
+
 //查询
 function searchWebsite() {
     $("#dg-table").datagrid('load', {
@@ -21,12 +34,48 @@ function resetValue() {
 
 }
 
+//获取节点树
+function exists(rows, pid) {
+    for (var i = 0; i < rows.length; i++) {
+        if (rows[i].id == pid) return true;
+    }
+    return false;
+}
 
+function convert(rows) {
+    var nodes = [];
+    for (var j = 0; j < rows.length; j++) {
+        var oneRow = rows[j];
+        if (!exists(rows, oneRow.pid)) {
+            nodes.push({
+                id: oneRow.id,
+                text: oneRow.typeName
+            });
+        }
+    }
 
-
-
-
-
+    var toDo = [];
+    for (var k = 0; k < nodes.length; k++) {
+        toDo.push(nodes[k]);
+    }
+    while (toDo.length) {
+        var node = toDo.shift();    // the parent node
+        // get the children nodes
+        for (var i = 0; i < rows.length; i++) {
+            var row = rows[i];
+            if (row.pid == node.id) {
+                var child = {id: row.id, text: row.typeName};
+                if (node.children) {
+                    node.children.push(child);
+                } else {
+                    node.children = [child];
+                }
+                toDo.push(child);
+            }
+        }
+    }
+    return nodes;
+}
 
 
 //保存一级分类
@@ -194,10 +243,10 @@ function deleteSecondType() {
                     data: {},
                     success: function (result) {
                         if (result.resultCode == 200) {
-                            $.messager.alert("系统提示","数据已成功删除！");
+                            $.messager.alert("系统提示", "数据已成功删除！");
                             $("#detailTable").datagrid("reload");
                         } else {
-                            $.messager.alert("系统提示","数据删除失败！");
+                            $.messager.alert("系统提示", "数据删除失败！");
                         }
                     },
                     error: function () {
@@ -220,7 +269,7 @@ function deleteFirstType() {
         strIds.push(selectedRows[i].id);
     }
     var ids = strIds.join(",");
-    $.messager.confirm("系统提示","<span style='color:red;'>删除这些记录时会删除对应子菜单的全部内容，确认删除吗？</span>",function(r) {
+    $.messager.confirm("系统提示", "<span style='color:red;'>删除这些记录时会删除对应子菜单的全部内容，确认删除吗？</span>", function (r) {
         if (r) {
             $.messager.confirm("系统提示", "确认要删除这<span style='color: red'>" + selectedRows.length + "</span>条数据吗？", function (r) {
                 if (r) {

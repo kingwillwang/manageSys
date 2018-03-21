@@ -91,4 +91,13 @@ public interface BrandTypeDao {
      * @return
      */
     public void deleteBrandTypesByPid(String[] pids);
+
+    /**
+     * 查询所有类型
+     * @author willwang
+     * @date 2018/3/21 15:22
+     * @param
+     * @return
+     */
+    public List<BrandType> findAllBrandTypes();
 }

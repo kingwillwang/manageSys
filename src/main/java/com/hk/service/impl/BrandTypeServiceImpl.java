@@ -103,4 +103,8 @@ public class BrandTypeServiceImpl implements BrandTypeService {
     public void deleteTypesByPid(String[] pids) {
         brandTypeDao.deleteBrandTypesByPid(pids);
     }
+
+    public List<BrandType> findAllBrandTypes() {
+        return brandTypeDao.findAllBrandTypes();
+    }
 }

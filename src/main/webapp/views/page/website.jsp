@@ -12,7 +12,6 @@
     <script type="text/javascript">
         try{ace.settings.loadState('main-container')}catch(e){}
     </script>
-
     <div class="main-content">
         <div class="main-content-inner">
             <div class="breadcrumbs ace-save-state" id="breadcrumbs">
@@ -55,19 +54,65 @@
                         <div class="toolRight">
                             <a href="javascript:openAddDialog()" class="easyui-linkbutton" iconCls="icon-add" plain="true">添加</a>
                             <span>|</span>
-                            <a href="javascript:openModifyDialog()" class="easyui-linkbutton" iconCls="icon-set" plain="true">编辑</a>
+                            <a href="javascript:openModifyDialog()" class="easyui-linkbutton" iconCls="icon-edit" plain="true">编辑</a>
                             <span>|</span>
                             <a href="javascript:deleteWebsite()" class="easyui-linkbutton" iconCls="icon-remove" plain="true">删除</a>
                         </div>
                     </div>
                     <div id="dlg" class="easyui-dialog" closed="true" buttons="#dlg-buttons">
-                        <form id="fm" method="post" class="form-horizontal" style="overflow: hidden;width: 100%">
+                        <form id="fm" class="form-horizontal" method="post" style="width: 100%;height: 100%;overflow: hidden">
                             <div class="form-group">
-                                <label class="col-sm-2 control-label center">名称:</label>
+                                <label for="websiteName" class="col-sm-2 control-label fm-lab">名称:</label>
                                 <div class="col-sm-10">
-                                    <input type="hidden" id="typeId-first" name="typeId">
-                                    <input type="text" class="form-control" id="typeName-first" name="typeName" required
-                                           placeholder="请输入分类类型名称">
+                                    <input class="form-control easyui-textbox" type="text" name="websiteName" id="websiteName"
+                                           data-options="prompt:'请输入品牌名称'" style="width: 100%;height: 34px"/>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="websiteUrl" class="col-sm-2 control-label fm-lab">地址:</label>
+                                <div class="col-sm-10">
+                                    <input class="form-control easyui-textbox" type="text" name="websiteUrl" id="websiteUrl"
+                                           data-options="prompt:'请输入品牌链接地址'" style="width: 100%;height: 34px"/>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="websiteLogo" class="col-sm-2 control-label fm-lab">Logo:</label>
+                                <div class="col-sm-10">
+                                    <input class="easyui-filebox form-control" name="websiteLogo" id="websiteLogo" style="width: 100%;height: 34px"/>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label fm-lab">推荐品牌:</label>
+                                <div class="col-sm-4">
+                                    <label class="radio-inline">
+                                        <input type="radio" name="isRecommend" value="1" checked>是
+                                    </label>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="isRecommend" value="0">否
+                                    </label>
+                                </div>
+                                <label for="websiteSort" class="col-sm-1 control-label fm-lab" style="text-align: center">排序:</label>
+                                <div class="col-sm-5">
+                                    <select class="easyui-combobox form-control" id="websiteSort" style="width: 100%;height: 34px">
+                                        <option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option><option value="E">E</option><option value="F">F</option>
+                                        <option value="G">G</option><option value="H">H</option><option value="I">I</option><option value="J">J</option><option value="K">K</option><option value="L">L</option>
+                                        <option value="M">M</option><option value="N">N</option><option value="O">O</option><option value="P">P</option><option value="Q">Q</option><option value="R">R</option>
+                                        <option value="S">S</option><option value="T">T</option><option value="U">U</option><option value="V">V</option><option value="W">W</option><option value="X">X</option>
+                                        <option value="Y">Y</option><option value="Z">Z</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="websiteType" class="col-sm-2 control-label fm-lab">类别:</label>
+                                <div class="col-md-10">
+                                    <select class="easyui-combotree" id="websiteType" style="width: 100%;height: 34px"
+                                            data-options="prompt:'请选择品牌类型'" multiple></select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="websiteDesc" class="col-sm-4 control-label fm-lab">品牌描述:</label>
+                                <div class="col-md-12" style="padding-left: 0;padding-top: 5px">
+                                    <textarea class="form-control" id="websiteDesc" rows="8" style="resize: none"></textarea>
                                 </div>
                             </div>
                         </form>

@@ -155,4 +155,11 @@ public class BrandTypeController {
         log.info("request: brandType/deleteFirst , ids: " + ids);
         return ResultGenerator.genSuccessResult();
     }
+
+    @RequestMapping(value = "/allTypeList", method = RequestMethod.POST)
+    @ResponseBody
+    public List<BrandType> allTypeList(){
+        List<BrandType> brandTypeList = brandTypeService.findAllBrandTypes();
+        return brandTypeList;
+    }
 }
