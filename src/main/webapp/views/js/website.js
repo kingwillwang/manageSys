@@ -10,6 +10,25 @@ $(function () {
         }
     });
     $("#countNum").textbox('setValue', 0);
+
+    $.ajaxFileUpload({
+        type:'POST',
+        url : basePath + "/upload/saveImg",
+        secureuri : false,
+        data : queryFormParam('#formId'),//需要传递的数据 json格式
+        fileElementId :'websiteLogoUp',
+        dataType : 'json',
+        success : function(data) { //上传成功后的回调。
+            if(data.status){
+                $.messager.alert("提示","保存成功");
+            }else {
+                $.messager.alert("提示","保存失败");
+            }
+        },
+        error : function(data) {
+            $.messager.alert("提示","异常，请稍后再试！");
+        }
+    });
 });
 
 //查询
@@ -195,3 +214,4 @@ function deleteWebsite() {
         }
     });
 }
+

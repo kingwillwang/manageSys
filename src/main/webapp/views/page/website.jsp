@@ -60,7 +60,7 @@
                         </div>
                     </div>
                     <div id="dlg" class="easyui-dialog" closed="true" buttons="#dlg-buttons">
-                        <form id="fm" class="form-horizontal" method="post" style="width: 100%;height: 100%;overflow: hidden">
+                        <form id="fm" class="form-horizontal" method="post" enctype="multipart/form-data" style="width: 100%;height: 100%;overflow: hidden">
                             <input type="hidden" id="id" name="id">
                             <div class="form-group">
                                 <label for="websiteName" class="col-sm-2 control-label fm-lab">名称:</label>
@@ -80,7 +80,8 @@
                                 <label for="websiteLogo" class="col-sm-2 control-label fm-lab">Logo:</label>
                                 <input type="hidden" id="websiteLogo" name="websiteLogo">
                                 <div class="col-sm-10">
-                                    <input class="easyui-filebox form-control" id="websiteLogoUp" style="width: 100%;height: 34px"/>
+                                    <input class="easyui-filebox form-control" id="websiteLogoUp" style="width: 100%;height: 34px"
+                                           data-options="buttonText:'选择文件',accept:'image/png,image/jpeg'"/>
                                 </div>
                             </div>
                             <div class="form-group">
