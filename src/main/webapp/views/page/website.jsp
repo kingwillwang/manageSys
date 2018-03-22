@@ -5,7 +5,13 @@
     <title>品牌详情</title>
     <jsp:include page="${pageContext.request.contextPath}/common/page/contentHeader.jsp"/>
     <jsp:include page="${pageContext.request.contextPath}/common/page/base.jsp"/>
+    <script src="${pageContext.request.contextPath}/common/js/ajaxfileupload.js"></script>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/views/css/website.css">
+    <script type="text/javascript">
+        $('input[id=websiteLogo]').change(function() {
+            $('#photoCover').val($(this).val());
+        });
+    </script>
 </head>
 <body>
 <div class="main-container ace-save-state" id="main-container">
@@ -78,11 +84,16 @@
                             </div>
                             <div class="form-group">
                                 <label for="websiteLogo" class="col-sm-2 control-label fm-lab">Logo:</label>
-                                <input type="hidden" id="websiteLogo" name="websiteLogo">
                                 <div class="col-sm-10">
-                                    <input class="easyui-filebox form-control" id="websiteLogoUp" style="width: 100%;height: 34px"
-                                           data-options="buttonText:'选择文件',accept:'image/png,image/jpeg'"/>
+                                    <input type="file" id="websiteLogo" name="websiteLogo" style="display:none">
+                                    <input id="photoCover" class="input-large" type="text" style="height:34px;">
+                                    <a class="btn btn-default" onclick="$('input[id=websiteLogo]').click();">Browse</a>
                                 </div>
+
+                            <%--<div class="col-sm-10">--%>
+                                    <%--<input class="easyui-filebox form-control" id="websiteLogoUp" style="width: 100%;height: 34px"--%>
+                                           <%--data-options="buttonText:'选择文件',accept:'image/png,image/jpeg'"/>--%>
+                                <%--</div>--%>
                             </div>
                             <div class="form-group">
                                 <label class="col-sm-2 control-label fm-lab">推荐品牌:</label>

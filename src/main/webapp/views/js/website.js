@@ -15,7 +15,7 @@ $(function () {
         type:'POST',
         url : basePath + "/upload/saveImg",
         secureuri : false,
-        data : queryFormParam('#formId'),//需要传递的数据 json格式
+        // data : queryFormParam('#formId'),//需要传递的数据 json格式
         fileElementId :'websiteLogoUp',
         dataType : 'json',
         success : function(data) { //上传成功后的回调。
