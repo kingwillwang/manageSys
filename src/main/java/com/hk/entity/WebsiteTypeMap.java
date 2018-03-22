@@ -10,9 +10,8 @@ import java.io.Serializable;
 public class WebsiteTypeMap implements Serializable{
     private String id;
     private String createDate;
-    private String modifyDate;
-    private BrandType brandType;
-    private Website website;
+    private String brandTypeId;
+    private String websiteId;
 
     public String getId() {
         return id;
@@ -30,27 +29,19 @@ public class WebsiteTypeMap implements Serializable{
         this.createDate = createDate;
     }
 
-    public String getModifyDate() {
-        return modifyDate;
+    public String getBrandTypeId() {
+        return brandTypeId;
     }
 
-    public void setModifyDate(String modifyDate) {
-        this.modifyDate = modifyDate;
+    public void setBrandTypeId(String brandTypeId) {
+        this.brandTypeId = brandTypeId;
     }
 
-    public BrandType getBrandType() {
-        return brandType;
+    public String getWebsiteId() {
+        return websiteId;
     }
 
-    public void setBrandType(BrandType brandType) {
-        this.brandType = brandType;
-    }
-
-    public Website getWebsite() {
-        return website;
-    }
-
-    public void setWebsite(Website website) {
-        this.website = website;
+    public void setWebsiteId(String websiteId) {
+        this.websiteId = websiteId;
     }
 }

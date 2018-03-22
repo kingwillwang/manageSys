@@ -62,4 +62,10 @@ public interface WebsiteService {
     public List<Website> getAllWebsite(Map<String, Object> map);
 
     public Long getTotalWebsite(Map<String, Object> map);
+
+    public int addWebsite(Website website);
+
+    public void deleteWebsiteByIds(String[] ids);
+
+    public int updateWebsite(Website website);
 }

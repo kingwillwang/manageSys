@@ -62,4 +62,34 @@ public interface WebsiteDao {
     public List<Website> getAllWebsite(Map<String, Object> map);
 
     public Long getTotalWebsite(Map<String, Object> map);
+
+    /**
+     * 新增
+     * @author willwang
+     * @date 2018/3/22 9:23
+     * @param
+     * @return
+     */
+    public void addWebsite(Website website);
+
+    public Long findWebsiteNameIsExist(String websiteName);
+
+    public Website findWebsiteById(String id);
+    /**
+     * 删除
+     * @author willwang
+     * @date 2018/3/22 14:06
+     * @param
+     * @return
+     */
+    public void deleteWebsiteByIds(String[] ids);
+
+    /**
+     * 修改
+     * @author willwang
+     * @date 2018/3/22 13:36
+     * @param
+     * @return
+     */
+    public void updateWebsite(Website website);
 }

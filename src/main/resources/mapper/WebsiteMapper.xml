@@ -62,7 +62,7 @@
 
     <!-- 查询所有 -->
     <select id="getAllWebsite" parameterType="Map" resultType="com.hk.entity.Website">
-        SELECT id,createDate,modifyDate,websiteName,websiteUrl,countNum
+        SELECT *
         FROM website
         <where>
             <if test="websiteName!=null and websiteName!='' ">
@@ -86,4 +86,66 @@
         </where>
     </select>
 
+    <!-- 添加 -->
+    <insert id="addWebsite" parameterType="com.hk.entity.Website">
+        INSERT INTO website(
+                      id,createDate,modifyDate,
+                      websiteName,websiteLogo,websiteUrl,
+                      websiteSort,isTopTen,countNum,isRecommend,websiteDesc)
+        VALUES (
+                #{id},#{createDate},#{modifyDate},
+                #{websiteName},#{websiteLogo},#{websiteUrl},
+                #{websiteSort},#{isTopTen},#{countNum},#{isRecommend},#{websiteDesc})
+    </insert>
+
+    <!-- 判断名称是否存在 -->
+    <select id="findWebsiteNameIsExist" parameterType="String" resultType="Long">
+        SELECT COUNT(*)
+        FROM website
+        WHERE websiteName = #{websiteName}
+    </select>
+
+    <delete id="deleteWebsiteByIds" parameterType="String">
+        delete from website where id in
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+
+    <update id="updateWebsite" parameterType="com.hk.entity.Website">
+        update website
+        <set>
+            <if test="modifyDate!=null and modifyDate!='' ">
+                modifyDate=#{modifyDate},
+            </if>
+            <if test="websiteName!=null and websiteName!='' ">
+                websiteName=#{websiteName},
+            </if>
+            <if test="websiteLogo!=null and websiteLogo!='' ">
+                websiteLogo=#{websiteLogo},
+            </if>
+            <if test="websiteUrl!=null and websiteUrl!='' ">
+                websiteUrl=#{websiteUrl},
+            </if>
+            <if test="websiteSort!=null and websiteSort!='' ">
+                websiteSort=#{websiteSort},
+            </if>
+            <if test="countNum!=null and countNum!='' ">
+                countNum=#{countNum},
+            </if>
+            <if test="isRecommend!=null and isRecommend!='' ">
+                isRecommend=#{isRecommend},
+            </if>
+            <if test="websiteDesc!=null and websiteDesc!='' ">
+                websiteDesc=#{websiteDesc}
+            </if>
+        </set>
+        where id=#{id}
+    </update>
+
+    <select id="findWebsiteById" parameterType="String" resultType="com.hk.entity.Website">
+        SELECT *
+        FROM website
+        WHERE id = #{id}
+    </select>
 </mapper>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.hk.dao.WebsiteTypeMapDao">
+    <!-- 添加 -->
+    <insert id="addWebsiteTypeMap" parameterType="List">
+        INSERT INTO websitetypemap(id,websiteId,brandTypeId,createDate)
+        VALUES
+        <foreach collection="list" item="item" index="index" separator=",">
+            (#{item.id},#{item.websiteId},#{item.brandTypeId},#{item.createDate})
+        </foreach>
+    </insert>
+
+    <delete id="deleteMapByWebsiteId" parameterType="String">
+        delete from websitetypemap where websiteId in
+        <foreach item="websiteId" collection="array" open="(" separator="," close=")">
+            #{websiteId}
+        </foreach>
+    </delete>
+
+    <select id="getTypeIdListByWebsiteId" parameterType="String" resultType="String">
+        SELECT brandTypeId
+        FROM websitetypemap
+        WHERE websiteId = #{websiteId}
+    </select>
+
+</mapper>

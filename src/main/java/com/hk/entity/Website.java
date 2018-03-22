@@ -31,8 +31,8 @@ public class Website implements Serializable{
     private String isRecommend;
     //介绍
     private String websiteDesc;
-    //分类类别
-    private List<BrandType> brandTypes;
+    //分类类别id
+    private List<String> brandTypeIdList;
 
     public String getId() {
         return id;
@@ -114,12 +114,12 @@ public class Website implements Serializable{
         this.modifyDate = modifyDate;
     }
 
-    public List<BrandType> getBrandTypes() {
-        return brandTypes;
+    public List<String> getBrandTypeIdList() {
+        return brandTypeIdList;
     }
 
-    public void setBrandTypes(List<BrandType> brandTypes) {
-        this.brandTypes = brandTypes;
+    public void setBrandTypeIdList(List<String> brandTypeIdList) {
+        this.brandTypeIdList = brandTypeIdList;
     }
 
     public String getIsRecommend() {

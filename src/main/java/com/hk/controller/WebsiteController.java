@@ -149,4 +149,35 @@ public class WebsiteController {
         return null;
     }
 
+    @RequestMapping(value = "/addOrUpdate", method = RequestMethod.POST)
+    @ResponseBody
+    public Result addOrUpdate(@RequestBody Website website) {
+        int resultCode = -1;
+        if (StringUtil.isEmpty(website.getId())) {
+            //新增
+            resultCode = websiteService.addWebsite(website);
+        } else {
+            //修改
+            resultCode = websiteService.updateWebsite(website);
+        }
+        if (resultCode == 1) {
+            return ResultGenerator.genSuccessResult();
+        } else if (resultCode == 2) {
+            return ResultGenerator.genBadResult("已存在！");
+        } else if (resultCode == 0){
+            return ResultGenerator.genBadResult("名称或类型不能为空！");
+        } else {
+            return ResultGenerator.genFailResult("操作失败！");
+        }
+    }
+
+    @RequestMapping(value = "/{ids}", method = RequestMethod.DELETE)
+    @ResponseBody
+    public Result delete(@PathVariable(value = "ids") String ids){
+        String[] idsStr = ids.split(",");
+        websiteService.deleteWebsiteByIds(idsStr);
+        log.info("request: website/delete , ids: " + ids);
+        return ResultGenerator.genSuccessResult();
+    }
+
 }

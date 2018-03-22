@@ -21,8 +21,8 @@ public class BrandType implements Serializable{
     private String typeName;
     //级别
     private String sortNum;
-    //一个类别对应的品牌
-    private List<Website> websiteList;
+    //一个类别对应的品牌ID
+    private List<String> websiteIdList;
 
     public String getId() {
         return id;
@@ -72,11 +72,11 @@ public class BrandType implements Serializable{
         this.modifyDate = modifyDate;
     }
 
-    public List<Website> getWebsiteList() {
-        return websiteList;
+    public List<String> getWebsiteIdList() {
+        return websiteIdList;
     }
 
-    public void setWebsiteList(List<Website> websiteList) {
-        this.websiteList = websiteList;
+    public void setWebsiteIdList(List<String> websiteIdList) {
+        this.websiteIdList = websiteIdList;
     }
 }

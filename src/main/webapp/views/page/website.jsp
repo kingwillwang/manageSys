@@ -61,6 +61,7 @@
                     </div>
                     <div id="dlg" class="easyui-dialog" closed="true" buttons="#dlg-buttons">
                         <form id="fm" class="form-horizontal" method="post" style="width: 100%;height: 100%;overflow: hidden">
+                            <input type="hidden" id="id" name="id">
                             <div class="form-group">
                                 <label for="websiteName" class="col-sm-2 control-label fm-lab">名称:</label>
                                 <div class="col-sm-10">
@@ -77,8 +78,9 @@
                             </div>
                             <div class="form-group">
                                 <label for="websiteLogo" class="col-sm-2 control-label fm-lab">Logo:</label>
+                                <input type="hidden" id="websiteLogo" name="websiteLogo">
                                 <div class="col-sm-10">
-                                    <input class="easyui-filebox form-control" name="websiteLogo" id="websiteLogo" style="width: 100%;height: 34px"/>
+                                    <input class="easyui-filebox form-control" id="websiteLogoUp" style="width: 100%;height: 34px"/>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -104,9 +106,13 @@
                             </div>
                             <div class="form-group">
                                 <label for="websiteType" class="col-sm-2 control-label fm-lab">类别:</label>
-                                <div class="col-md-10">
+                                <div class="col-md-5">
                                     <select class="easyui-combotree" id="websiteType" style="width: 100%;height: 34px"
                                             data-options="prompt:'请选择品牌类型'" multiple></select>
+                                </div>
+                                <label for="countNum" class="col-sm-2 control-label fm-lab">访问量:</label>
+                                <div class="col-sm-3">
+                                    <input class="form-control easyui-textbox" type="text" name="countNum" id="countNum" style="width: 100%;height: 34px"/>
                                 </div>
                             </div>
                             <div class="form-group">
