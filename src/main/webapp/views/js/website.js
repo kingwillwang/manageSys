@@ -16,7 +16,7 @@ $(function () {
 
 function changeTxt() {
     $('input[id=upFile]').change(function () {
-        $('#photoCover').val($(this).val());
+        $('#photoCover').val($('input[id=upFile]').val());
     });
 }
 
@@ -27,6 +27,7 @@ function upImg() {
             $.messager.alert("系统提示", "请选择文件！");
         } else {
             fileUpload("upFile");
+            changeTxt();
         }
     });
 }
