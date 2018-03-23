@@ -11,5 +11,13 @@ import java.io.IOException;
  */
 public interface UploadService {
 
-    public String uploadImage(CommonsMultipartFile file, String realUploadPath) throws IOException;
+    /**
+     * @param file 文件
+     *             savedName 需要保存的文件名
+     *             savedDir 保存的服务器位置
+     * @return 文件最后路径
+     * @author willwang
+     * @date 2018/3/23 13:37
+     */
+    public String uploadImage(CommonsMultipartFile file, String savedName, String savedDir) throws IOException;
 }

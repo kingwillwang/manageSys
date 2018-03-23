@@ -7,6 +7,7 @@ function searchFirstTypes() {
 
 //打开对话框
 function openAddFirstType() {
+    resetValue();
     $("#dlg-first").dialog("open").dialog("setTitle", "添加一级分类");
 }
 

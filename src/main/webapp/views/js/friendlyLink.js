@@ -7,6 +7,7 @@ function searchLink() {
 
 //打开对话框
 function openAddDialog() {
+    resetValue();
     $("#link-dlg").dialog("open").dialog("setTitle", "添加友情链接");
 }
 

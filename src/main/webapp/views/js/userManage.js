@@ -9,6 +9,7 @@ function searchUser() {
 
 //打开对话框
 function openUserAddDialog() {
+    resetValue();
     $("#userAddDlg").dialog("open").dialog("setTitle", "添加用户");
 }
 

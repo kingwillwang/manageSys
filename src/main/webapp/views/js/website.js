@@ -10,26 +10,71 @@ $(function () {
         }
     });
     $("#countNum").textbox('setValue', 0);
+    changeTxt();
+    upImg();
+});
 
-    $.ajaxFileUpload({
-        type:'POST',
-        url : basePath + "/upload/saveImg",
-        secureuri : false,
-        // data : queryFormParam('#formId'),//需要传递的数据 json格式
-        fileElementId :'websiteLogoUp',
-        dataType : 'json',
-        success : function(data) { //上传成功后的回调。
-            if(data.status){
-                $.messager.alert("提示","保存成功");
-            }else {
-                $.messager.alert("提示","保存失败");
-            }
-        },
-        error : function(data) {
-            $.messager.alert("提示","异常，请稍后再试！");
+function changeTxt() {
+    $('input[id=upFile]').change(function () {
+        $('#photoCover').val($(this).val());
+    });
+}
+
+function upImg() {
+    $("#uploadImg").click(function () {
+        var text = $('#photoCover').val();
+        if (text == null || text == "") {
+            $.messager.alert("系统提示", "请选择文件！");
+        } else {
+            fileUpload("upFile");
         }
     });
-});
+}
+
+function imageCheck(fileId) { //自己添加的文件后缀名的验证
+    var img = document.getElementById(fileId);
+    var imgName = img.value;
+    var arr = ["jpg", "png", "JPG", "PNG"];
+    var index = imgName.lastIndexOf(".");
+    var ext = imgName.substr(index + 1);
+    for (var i = 0; i < arr.length; i++) {
+        if (ext == arr[i]) {
+            return true;
+            break;
+        }
+    }
+    return false;
+}
+
+function fileUpload(fileId) {
+    var websiteName = $("#websiteName").textbox("getValue");
+    if (imageCheck(fileId)) { //文件后缀名的验证
+        $.ajaxFileUpload({
+            type: 'post',   //当要提交自定义参数时，这个参数要设置成post
+            url: basePath + "/upload/saveImg", //后台方法的路径
+            fileElementId: fileId,    //需要上传的文件域的ID，即<input type="file">的ID。
+            data: {
+                websiteName: websiteName
+            },
+            dataType: 'json',   //服务器返回的数据类型。可以为xml,script,json,html。如果不填写，jQuery会自动判断。
+            secureuri: false,   //是否启用安全提交，默认为false。
+            async: true,   //是否是异步
+            success: function (result) {   //提交成功后自动执行的处理函数，参数data就是服务器返回的数据。
+                if (result.resultCode == 200) {
+                    $.messager.alert("系统提示", "上传成功");
+                    $("#websiteLogo").val(result.data);
+                } else {
+                    $.messager.alert("系统提示", result.message);
+                }
+            },
+            error: function () {  //提交失败自动执行的处理函数。
+                $.messager.alert("系统提示", "操作失败");
+            }
+        });
+    } else {
+        $.messager.alert("系统提示", "图片格式仅支持jpg、png格式。");
+    }
+}
 
 //查询
 function searchWebsite() {
@@ -40,7 +85,9 @@ function searchWebsite() {
 
 //打开对话框
 function openAddDialog() {
+    resetValue();
     $("#dlg").dialog("open").dialog("setTitle", "添加品牌");
+    $('#websiteName').textbox('textbox').attr('readonly',false);
 }
 
 //关闭对话框
@@ -124,10 +171,10 @@ function saveWebsite() {
 
     if (websiteName == null || websiteName == "" || typeof websiteName == "undefined") {
         $.messager.alert("系统提示", "名称不能为空！");
-        resetValue();
+        // resetValue();
     } else if (websiteTypeIds == null || websiteTypeIds == "" || typeof websiteTypeIds == "undefined") {
         $.messager.alert("系统提示", "类别不能为空！");
-        resetValue();
+        // resetValue();
     } else {
         var data = {
             "id": id,
@@ -154,8 +201,8 @@ function saveWebsite() {
                     resetValue();
                 } else {
                     $.messager.alert("系统提示", result.message);
-                    $("#dlg").dialog("close");
-                    resetValue();
+                    // $("#dlg").dialog("close");
+                    // resetValue();
                 }
             },
             error: function () {
@@ -176,6 +223,7 @@ function openModifyDialog() {
     $("#dlg").dialog("open").dialog("setTitle", "品牌信息");
     $('#fm').form('load', row);
     $("#id").val(row.id);
+    $('#websiteName').textbox('textbox').attr('readonly',true);
     $("#websiteSort").textbox('setValue', row.websiteSort);
     $('#websiteType').combotree('setValue', row.brandTypeIdList);
     $("#websiteDesc").val(row.websiteDesc);
