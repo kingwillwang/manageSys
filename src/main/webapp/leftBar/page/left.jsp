@@ -52,6 +52,20 @@
             </ul>
         </li>
         <li>
+            <a href="${pageContext.request.contextPath}/views/page/questions.jsp" data-target="menuIframe"
+               data-tab-title="&nbsp;常见问答&nbsp;&nbsp;">
+                <i class="icon-question"></i>
+                <span class="menu-text"> 常见问答 </span>
+            </a>
+        </li>
+        <li>
+            <a href="${pageContext.request.contextPath}/views/page/news.jsp" data-target="menuIframe"
+               data-tab-title="&nbsp;新闻中心&nbsp;&nbsp;">
+                <i class="icon-edit"></i>
+                <span class="menu-text"> 新闻中心 </span>
+            </a>
+        </li>
+        <li>
             <a href="${pageContext.request.contextPath}/views/page/friendlyLink.jsp" data-target="menuIframe"
                data-tab-title="&nbsp;友情链接&nbsp;&nbsp;">
                 <i class="icon-link"></i>
