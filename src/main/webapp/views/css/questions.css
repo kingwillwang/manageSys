@@ -1,0 +1,16 @@
+#dlg {
+    width: 600px;
+    height:600px;
+    padding: 8px;
+    display: flex;
+    align-items: center;
+    justify-content:center;
+}
+
+#dlg .fm-lab {
+    margin: 0;
+    padding: 0;
+    height: 34px;
+    display: flex;
+    align-items: center;
+}
