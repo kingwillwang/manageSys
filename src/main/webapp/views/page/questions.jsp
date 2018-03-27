@@ -58,18 +58,18 @@
                         </div>
                     </div>
                     <div id="dlg" class="easyui-dialog" closed="true" buttons="#dlg-buttons">
-                        <form id="fm" method="post" class="form-horizontal" style="overflow: hidden;width: 100%">
+                        <form id="fm" method="post" class="form-horizontal" style="overflow: hidden;width: 100%;height: 100%;">
                             <input type="hidden" id="questionId" name="id">
                             <div class="form-group">
                                 <label for="question" class="col-sm-4 control-label fm-lab">问&nbsp;&nbsp;题:</label>
                                 <div class="col-md-12" style="padding-left: 0;padding-top: 5px">
-                                    <textarea class="form-control" id="question" name="question" rows="3" style="resize: none"></textarea>
+                                    <textarea class="form-control" id="question" name="question" rows="8" style="resize: none"></textarea>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="answer" class="col-sm-4 control-label fm-lab">回&nbsp;&nbsp;答:</label>
                                 <div class="col-md-12" style="padding-left: 0;padding-top: 5px">
-                                    <textarea class="form-control" id="answer" name="answer" rows="3" style="resize: none"></textarea>
+                                    <textarea class="form-control" id="answer" name="answer" rows="8" style="resize: none"></textarea>
                                 </div>
                             </div>
                         </form>

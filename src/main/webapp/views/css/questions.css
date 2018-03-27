@@ -1,10 +1,25 @@
+.datagrid-cell, .datagrid-cell-group, .datagrid-header-rownumber, .datagrid-cell-rownumber{
+    text-overflow: ellipsis;
+}
+
 #dlg {
     width: 600px;
-    height:600px;
+    height:480px;
     padding: 8px;
     display: flex;
     align-items: center;
     justify-content:center;
+}
+
+#dlg .form-group {
+    margin: 15px 5px 0;
+    font-size: 15px;
+}
+
+#dlg .form-group label {
+    font-weight: bold;
+    font-size: 15px;
+    text-align: left;
 }
 
 #dlg .fm-lab {
