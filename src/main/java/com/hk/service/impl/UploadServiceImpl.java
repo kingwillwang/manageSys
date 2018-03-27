@@ -1,5 +1,6 @@
-package com.hk.service;
+package com.hk.service.impl;
 
+import com.hk.service.UploadService;
 import com.hk.util.FileUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;

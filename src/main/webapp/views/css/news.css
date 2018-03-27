@@ -1,0 +1,52 @@
+#dlg {
+    width: 680px;
+    height: 600px;
+    padding: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#dlg .form-group {
+    margin: 15px 5px 0;
+    font-size: 15px;
+    height: 34px;
+}
+
+#dlg .form-group label {
+    font-weight: bold;
+    font-size: 15px;
+    text-align: left;
+}
+
+#dlg .fm-lab {
+    margin: 0;
+    padding: 0;
+    height: 34px;
+    display: flex;
+    align-items: center;
+}
+
+#dlg .col-sm-10 {
+    padding-left: 0;
+}
+
+.btn {
+    display: inline-block;
+    padding: 6px 12px;
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 1.428571429;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    cursor: pointer;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+}

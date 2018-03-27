@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.hk.dao.NewsDao">
+
+    <select id="getNewsList" parameterType="Map" resultType="com.hk.entity.News">
+        SELECT *
+        FROM news
+        <where>
+            <if test="newsTitle!=null and newsTitle!='' ">
+                AND newsTitle LIKE #{newsTitle}
+            </if>
+        </where>
+        <if test="start!=null and size!=null">
+            LIMIT #{start},#{size}
+        </if>
+    </select>
+
+    <select id="getTotalNews" parameterType="Map" resultType="Long">
+        SELECT COUNT(*) FROM news
+        <where>
+            <if test="newsTitle!=null and newsTitle!='' ">
+                AND newsTitle LIKE #{newsTitle}
+            </if>
+        </where>
+    </select>
+
+    <!-- 添加 -->
+    <insert id="addNews" parameterType="com.hk.entity.News">
+        INSERT INTO news(id,newsTitle,titleImg,summary,countNum,createDate,content)
+        VALUES (#{id},#{newsTitle},#{titleImg},#{summary},#{countNum},#{createDate},#{content})
+    </insert>
+
+    <!-- 修改 -->
+    <update id="updateNews" parameterType="com.hk.entity.News">
+        update news
+        <set>
+            <if test="newsTitle!=null and newsTitle!='' ">
+                newsTitle=#{newsTitle},
+            </if>
+            <if test="titleImg!=null and titleImg!='' ">
+                titleImg=#{titleImg},
+            </if>
+            <if test="summary!=null and summary!='' ">
+                summary=#{summary},
+            </if>
+            <if test="countNum!=null and countNum!='' ">
+                countNum=#{countNum},
+            </if>
+            <if test="createDate!=null and createDate!='' ">
+                createDate=#{createDate},
+            </if>
+            <if test="content!=null and content!='' ">
+                content=#{content}
+            </if>
+        </set>
+        where id=#{id}
+    </update>
+
+    <delete id="deleteNews" parameterType="String">
+        delete from news where id in
+        <foreach item="itemId" collection="array" open="(" separator="," close=")">
+            #{itemId}
+        </foreach>
+    </delete>
+
+    <select id="findNewsById" parameterType="String" resultType="com.hk.entity.News">
+        select *
+        from news where id=#{id}
+    </select>
+</mapper>
