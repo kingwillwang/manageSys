@@ -7,9 +7,9 @@
     <jsp:include page="${pageContext.request.contextPath}/common/page/base.jsp"/>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/views/css/news.css">
     <script src="${pageContext.request.contextPath}/common/js/ajaxfileupload.js"></script>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/kindeditor/themes/default/default.css"/>
-<script charset="utf-8" src="${pageContext.request.contextPath}/kindeditor/kindeditor-all.js"></script>
-<script charset="utf-8" src="${pageContext.request.contextPath}/kindeditor/lang/zh-CN.js"></script>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/kindeditor-4.1.10/themes/default/default.css"/>
+    <script charset="utf-8" src="${pageContext.request.contextPath}/kindeditor-4.1.10/kindeditor-all.js"></script>
+    <script charset="utf-8" src="${pageContext.request.contextPath}/kindeditor-4.1.10/lang/zh_CN.js"></script>
 </head>
 <body>
 <div class="main-container ace-save-state" id="main-container">
@@ -100,7 +100,7 @@
                             <div class="form-group">
                                 <label for="editor" class="col-sm-4 control-label fm-lab">内容:</label>
                                 <div class="col-sm-12" style="padding-left: 0;padding-top: 5px">
-                                    <textarea id="editor" class="form-control" style="width:350px;height:330px;visibility:hidden;"></textarea>
+                                    <textarea id="editor" class="form-control" style="width:1050px;height:430px;visibility:hidden;"></textarea>
                                 </div>
                             </div>
                         </form>
@@ -116,5 +116,10 @@
     </div>
 </div>
 <script src="${pageContext.request.contextPath}/views/js/news.js"></script>
+<script>
+    function formatHref(val, row) {
+        return "<a href='${pageContext.request.contextPath}/article.jsp?id=" + row.id + "' target='_blank'>查看详情</a>";
+    }
+</script>
 </body>
 </html>

@@ -15,8 +15,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
+import javax.servlet.ServletConfig;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -101,7 +103,7 @@ public class UploadController {
     @ResponseBody
     public Result upload(HttpServletRequest request, @RequestParam("imgFile") MultipartFile file) throws Exception {
         ServletContext sc = request.getSession().getServletContext();
-        String dir = sc.getRealPath("/newsEditor");
+        String dir = sc.getRealPath("newsEditor");
         String type = file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf(".") + 1, file.getOriginalFilename().length());
 
         SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd_HHmmss");
@@ -118,8 +120,7 @@ public class UploadController {
         }
         FileUtils.writeByteArrayToFile(new File(dir, imgName), file.getBytes());
         Result result = ResultGenerator.genSuccessResult();
-        String savedDir = request.getSession().getServletContext().getRealPath("newsEditor") + "/" + imgName;
-        result.setData(savedDir);
+        result.setData("/newsEditor/" + imgName);
         return result;
     }
 }

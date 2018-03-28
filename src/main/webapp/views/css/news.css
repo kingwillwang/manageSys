@@ -1,6 +1,10 @@
+.datagrid-cell, .datagrid-cell-group, .datagrid-header-rownumber, .datagrid-cell-rownumber{
+    text-overflow: ellipsis;
+}
+
 #dlg {
-    width: 680px;
-    height: 600px;
+    width: 1080px;
+    height: 700px;
     padding: 8px;
     display: flex;
     align-items: center;

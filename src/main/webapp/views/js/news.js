@@ -143,7 +143,7 @@ function resetValue() {
     $("#summary").val("");
     $("#titleImg").val("");
     $("#s_newsTitle").val("");
-    editor.html();
+    editor.html("");
 }
 
 //保存
@@ -153,7 +153,6 @@ function saveNews() {
     var summary = $("#summary").val();
     var titleImg = $("#titleImg").val();
     var content = editor.html();
-
     if (newsTitle == null || newsTitle == "" || typeof newsTitle == "undefined") {
         $.messager.alert("系统提示", "标题不能为空！");
     } else {
@@ -201,6 +200,3 @@ function openModifyDialog() {
     editor.html(row.content);
 }
 
-function formatHref(val, row) {
-    return "<a href='${pageContext.request.contextPath}/news.jsp?id=" + row.id + "' target='_blank'>查看详情</a>";
-}

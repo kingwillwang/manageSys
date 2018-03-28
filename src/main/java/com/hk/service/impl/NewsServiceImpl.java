@@ -61,4 +61,8 @@ public class NewsServiceImpl implements NewsService {
         newsDao.deleteNews(ids);
     }
 
+    public News findById(String id) {
+        return newsDao.findNewsById(id);
+    }
+
 }

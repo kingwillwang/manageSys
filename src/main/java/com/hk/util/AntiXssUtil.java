@@ -26,8 +26,8 @@ public class AntiXssUtil {
         content = replace(content, "</script", "</script", false);
         content = replace(content, "<marquee", "<marquee", false);
         content = replace(content, "</marquee", "</marquee", false);
-        content = replace(content, "'", "_", false);// 将单引号替换成下划线
-        content = replace(content, "\"", "_", false);// 将双引号替换成下划线
+//        content = replace(content, "'", "_", false);// 将单引号替换成下划线
+//        content = replace(content, "\"", "_", false);// 将双引号替换成下划线
         // 滤除脚本事件代码
         for (int i = 0; i < eventKeywords.length; i++) {
             if (content.toLowerCase().contains(eventKeywords[i].toLowerCase())) {

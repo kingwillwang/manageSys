@@ -81,4 +81,21 @@ public class NewsController {
         log.info("request: news/delete , ids: " + ids);
         return ResultGenerator.genSuccessResult();
     }
+
+    /**
+     * 根据id查找
+     *
+     * @param id
+     * @return
+     * @throws Exception
+     */
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    @ResponseBody
+    public Result findById(@PathVariable("id") String id){
+        News news = newsService.findById(id);
+        Result result = ResultGenerator.genSuccessResult();
+        result.setData(news);
+        log.info("request: news/findById");
+        return result;
+    }
 }

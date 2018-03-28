@@ -22,4 +22,5 @@ public interface NewsService {
 
     public void deleteNews(String[] ids);
 
+    public News findById(String id);
 }
