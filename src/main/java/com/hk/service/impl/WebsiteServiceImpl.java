@@ -147,4 +147,8 @@ public class WebsiteServiceImpl implements WebsiteService {
         websiteDao.updateWebsite(newWebsite);
         return 1;//操作成功
     }
+
+    public Long findWebsiteNameIsExist(String websiteName) {
+        return websiteDao.findWebsiteNameIsExist(websiteName);
+    }
 }

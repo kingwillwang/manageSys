@@ -7949,7 +7949,7 @@ K.extend(KSWFUpload, {
                     showError(itemDiv, K.DEBUG ? data.message : self.options.errorMessage);
                     return;
                 }
-                data.url = basePath + data.data;
+                data.url = data.data;
                 file.url = data.url;
                 K('.ke-img', itemDiv).attr('src', file.url).attr('data-status', file.filestatus).data('data', data);
                 K('.ke-status > div', itemDiv).hide();

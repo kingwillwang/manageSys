@@ -3,6 +3,7 @@ package com.hk.controller;
 import com.hk.common.Result;
 import com.hk.common.ResultGenerator;
 import com.hk.service.UploadService;
+import com.hk.service.WebsiteService;
 import com.hk.util.DateUtil;
 import com.hk.util.StringUtil;
 import org.apache.commons.io.FileUtils;
@@ -33,13 +34,21 @@ import java.util.*;
 @RequestMapping("/upload")
 public class UploadController {
 
+    public static final String baseDir = "C:\\shoptwoImgs";
+
     @Autowired
     private UploadService uploadService;
+    @Autowired
+    private WebsiteService websiteService;
 
     @RequestMapping(value = "/saveImg", method = RequestMethod.POST)
     @ResponseBody
-    public Result GenerateImage(@RequestParam CommonsMultipartFile file, @RequestParam("websiteName") String websiteName, HttpServletRequest request) {
+    public Result GenerateImage(@RequestParam CommonsMultipartFile file, @RequestParam("websiteName") String websiteName) {
         if (StringUtil.isNotEmpty(websiteName)) {
+            Long isExist = websiteService.findWebsiteNameIsExist(websiteName);
+            if (isExist > 0) {
+                return ResultGenerator.genBadResult("名称已经存在！");
+            }
             if (!file.isEmpty()) {
                 String fileRealName = file.getOriginalFilename();                      //获得原始文件名;
                 int pointIndex = fileRealName.lastIndexOf(".");                  //点号的位置
@@ -49,10 +58,12 @@ public class UploadController {
                 imgTypeList.add("png");
                 if (imgTypeList.contains(fileSuffix)) {
                     String savedFileName = UUID.randomUUID().toString().replace("-", "").concat(".").concat(fileSuffix);       //文件存取名
-                    String savedDir = request.getSession().getServletContext().getRealPath("websiteLogos") + "/" + websiteName;     //获取服务器指定文件存取路径
+//                    String savedDir = request.getSession().getServletContext().getRealPath("websiteLogos") + "/" + websiteName;     //获取服务器指定文件存取路径
+//                    String baseDir = "C:\\shoptwoImgs";     //对应配置里的/uploadImg
+                    String secondDir = "/website/" + websiteName;
                     String imageUrl = null;
                     try {
-                        imageUrl = uploadService.uploadImage(file, savedFileName, savedDir);
+                        imageUrl = uploadService.uploadImage(file, savedFileName, baseDir, secondDir);
                     } catch (IOException e) {
                         e.printStackTrace();
                         return ResultGenerator.genFailResult("操作失败！");
@@ -71,7 +82,7 @@ public class UploadController {
 
     @RequestMapping(value = "/saveNewsTitleImg", method = RequestMethod.POST)
     @ResponseBody
-    public Result newsTitleImage(@RequestParam CommonsMultipartFile file, @RequestParam("id") String id, HttpServletRequest request) {
+    public Result newsTitleImage(@RequestParam CommonsMultipartFile file){
         if (!file.isEmpty()) {
             String fileRealName = file.getOriginalFilename();                      //获得原始文件名;
             int pointIndex = fileRealName.lastIndexOf(".");                  //点号的位置
@@ -80,16 +91,26 @@ public class UploadController {
             imgTypeList.add("jpg");
             imgTypeList.add("png");
             if (imgTypeList.contains(fileSuffix)) {
-                String savedFileName = UUID.randomUUID().toString().replace("-", "").concat(".").concat(fileSuffix);       //文件存取名
-                String nowDate = DateUtil.formatDate(new Date(),"yyyyMMdd");
-                String savedDir = request.getSession().getServletContext().getRealPath("newsImgs") + "/" + nowDate + "/" + id;     //获取服务器指定文件存取路径
-                String imageUrl = null;
+                SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd_HHmmss");
+                Random r = new Random();
+                String imgName = "";
+                if (fileSuffix.equals("jpg")) {
+                    imgName = sdf.format(new Date()) + r.nextInt(100) + ".jpg";
+                } else if (fileSuffix.equals("png")) {
+                    imgName = sdf.format(new Date()) + r.nextInt(100) + ".png";
+                } else {
+                    return ResultGenerator.genFailResult("文件类型不匹配！");
+                }
+                String nowDate = DateUtil.formatDate(new Date(), "yyyyMMdd");
+                String secondDir = "/news/" + nowDate + "/newsTitles";
+                String dir = baseDir + secondDir;
                 try {
-                    imageUrl = uploadService.uploadImage(file, savedFileName, savedDir);
+                    FileUtils.writeByteArrayToFile(new File(dir, imgName), file.getBytes());
                 } catch (IOException e) {
                     e.printStackTrace();
                     return ResultGenerator.genFailResult("操作失败！");
                 }
+                String imageUrl = "/uploadImg" + secondDir + "/" + imgName;
                 return ResultGenerator.genSuccessResult(imageUrl);
             } else {
                 return ResultGenerator.genFailResult("文件类型不匹配！");
@@ -101,11 +122,13 @@ public class UploadController {
 
     @RequestMapping(value = "/editorImg", method = RequestMethod.POST)
     @ResponseBody
-    public Result upload(HttpServletRequest request, @RequestParam("imgFile") MultipartFile file) throws Exception {
-        ServletContext sc = request.getSession().getServletContext();
-        String dir = sc.getRealPath("newsEditor");
+    public Result upload(@RequestParam("imgFile") MultipartFile file){
+//        ServletContext sc = request.getSession().getServletContext();
+//        String dir = sc.getRealPath("newsEditor");
+        String nowDate = DateUtil.formatDate(new Date(), "yyyyMMdd");
+        String secondDir = "/news/" + nowDate + "/newsEditor";
+        String dir = baseDir + secondDir;
         String type = file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf(".") + 1, file.getOriginalFilename().length());
-
         SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd_HHmmss");
         Random r = new Random();
         String imgName = "";
@@ -116,11 +139,15 @@ public class UploadController {
         } else if (type.equals("jpeg")) {
             imgName = sdf.format(new Date()) + r.nextInt(100) + ".jpeg";
         } else {
-            return null;
+            return ResultGenerator.genFailResult("文件类型不匹配！");
         }
-        FileUtils.writeByteArrayToFile(new File(dir, imgName), file.getBytes());
-        Result result = ResultGenerator.genSuccessResult();
-        result.setData("/newsEditor/" + imgName);
-        return result;
+        try {
+            FileUtils.writeByteArrayToFile(new File(dir, imgName), file.getBytes());
+        } catch (IOException e) {
+            e.printStackTrace();
+            return ResultGenerator.genFailResult("操作失败！");
+        }
+        String outUrl = "/uploadImg" + secondDir + "/" + imgName;
+        return ResultGenerator.genSuccessResult(outUrl);
     }
 }

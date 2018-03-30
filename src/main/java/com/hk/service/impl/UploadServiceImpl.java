@@ -13,17 +13,19 @@ import java.io.*;
 @Service
 public class UploadServiceImpl implements UploadService {
 
-    public String uploadImage(CommonsMultipartFile file,String savedName, String savedDir) throws IOException {
+    public String uploadImage(CommonsMultipartFile file, String savedName, String baseDir, String secondDir) throws IOException {
+        String fileDir = baseDir + secondDir;
         //如果目录不存在则创建目录
-        File dir = new File(savedDir);
+        File dir = new File(fileDir);
         if (dir.exists()) {
             FileUtils.deleteDir(dir);
         }
         dir.mkdirs();
         //生成输出地址URL
-        String outputPath = savedDir + "/" + savedName;
+        String outputPath = fileDir + "/" + savedName;
         File newFile = new File(outputPath);
         file.transferTo(newFile);
-        return outputPath;
+        String outUrl = "/uploadImg" + secondDir + "/" + savedName;
+        return outUrl;
     }
 }

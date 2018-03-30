@@ -68,4 +68,6 @@ public interface WebsiteService {
     public void deleteWebsiteByIds(String[] ids);
 
     public int updateWebsite(Website website);
+
+    public Long findWebsiteNameIsExist(String websiteName);
 }
